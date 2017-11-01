@@ -106,12 +106,16 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__grid_horizontal_grid_horizontal_grid_component__ = __webpack_require__("../../../../../src/app/grid/horizontal-grid/horizontal-grid.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__shared_gallery_gallery_component__ = __webpack_require__("../../../../../src/app/shared/gallery/gallery.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__shared_load_load_component__ = __webpack_require__("../../../../../src/app/shared/load/load.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__shared_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/shared/not-found/not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__shared_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/shared/page-not-found/page-not-found.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -169,6 +173,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_25__grid_horizontal_grid_horizontal_grid_component__["a" /* HorizontalGridComponent */],
             __WEBPACK_IMPORTED_MODULE_26__shared_gallery_gallery_component__["a" /* GalleryComponent */],
             __WEBPACK_IMPORTED_MODULE_27__shared_load_load_component__["a" /* LoadComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__shared_not_found_not_found_component__["a" /* NotFoundComponent */],
+            __WEBPACK_IMPORTED_MODULE_29__shared_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
@@ -199,6 +205,8 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home_home_component__ = __webpack_require__("../../../../../src/app/home/home/home.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__category_category_category_component__ = __webpack_require__("../../../../../src/app/category/category/category.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__product_detail_detail_component__ = __webpack_require__("../../../../../src/app/product/detail/detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/shared/page-not-found/page-not-found.component.ts");
+
 
 
 
@@ -210,6 +218,7 @@ var routes = [
     { path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_3__category_category_category_component__["a" /* CategoryComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_1__seguranca_login_login_component__["a" /* LoginComponent */] },
     { path: 'product/:id', component: __WEBPACK_IMPORTED_MODULE_4__product_detail_detail_component__["a" /* DetailComponent */] },
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_5__shared_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */] }
 ];
 var appRoutingProviders = [];
 var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(routes);
@@ -220,7 +229,7 @@ var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule 
 /***/ "../../../../../src/app/category/category/category.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n\n<app-menu-departamentos></app-menu-departamentos>\n<app-menu-categoria></app-menu-categoria>\n\n<div class=\"container\">\n\n  <div [hidden]=\"load\">\n    <app-load></app-load>\n  </div>\n\n  <div *ngIf=\"isNotFound()\">\n    <span>Categoria não localizada</span>\n  </div>\n\n  <div *ngIf=\"load && !isNotFound()\">\n    <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid>\n  </div>\n\n</div>"
+module.exports = "<app-header></app-header>\n\n<app-menu-departamentos></app-menu-departamentos>\n<app-menu-categoria></app-menu-categoria>\n\n<div class=\"container\">\n\n  <div [hidden]=\"load\">\n    <app-load></app-load>\n  </div>\n\n  <div *ngIf=\"isNotFound()\">\n      <app-not-found></app-not-found>\n  </div>\n\n  <div *ngIf=\"load && !isNotFound()\">\n    <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid>\n  </div>\n\n</div>"
 
 /***/ }),
 
@@ -332,7 +341,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".horizontal-grid-box {\n  margin-top: 1em;\n  margin-bottom: 2em; }\n\n.horizontal-grid-short-description {\n  min-height: 6em;\n  text-align: center; }\n\n.horizontal-grid-container {\n  border: 1px solid #e0e0e0; }\n\n.horizontal-grid-img {\n  max-width: 160px; }\n", ""]);
+exports.push([module.i, ".horizontal-grid-box {\n  margin-top: 1em;\n  margin-bottom: 2em; }\n\n.horizontal-grid-short-description {\n  min-height: 6em;\n  text-align: center; }\n\n.horizontal-grid-container {\n  border: 1px solid #e0e0e0; }\n  .horizontal-grid-container img {\n    margin-bottom: 5px; }\n\n.horizontal-grid-img {\n  max-width: 160px; }\n", ""]);
 
 // exports
 
@@ -359,12 +368,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 var HorizontalGridComponent = (function () {
-    // @Input()
-    // public set itens(itens){
-    //     this.itens = itens;
-    //     console.log('upiii');
-    //     console.log(itens);
-    // }
     function HorizontalGridComponent() {
         this.load = true;
     }
@@ -373,21 +376,8 @@ var HorizontalGridComponent = (function () {
     };
     HorizontalGridComponent.prototype.ngOnChanges = function () {
         if (this.itens !== undefined) {
-            console.log('itens set values');
             this.load = false;
         }
-        // if ( typeof this.title == 'object' ) {
-        //     this.titleType = 'array';
-        //     // For tablet - only send the last most array item
-        //     this.tabletTitle = [this.title[this.title.length - 1]];     // Has to be in the form of array (to be consistent with other orange header data type)
-        // } else {
-        //     // Title is string - same for tablet
-        //     this.tabletTitle = this.title;
-        // }
-        // // Temporary to show filter button on catalog page
-        // if ( this.page == 'catalog' ) {
-        //     this.showFilterButton = true;
-        // }
     };
     return HorizontalGridComponent;
 }());
@@ -611,7 +601,7 @@ var _a;
 /***/ "../../../../../src/app/home/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header>\n</app-header>\n<app-banner-principal [images]='images'></app-banner-principal>\n<!-- <app-menu-departamentos></app-menu-departamentos> -->\n\n\n<div class=\"container\">\n  <app-menu-categoria></app-menu-categoria>\n\n  <!-- <div #dataContainerHomeCorpo01Cont></div> -->\n\n  <!-- <div class=\"spot_webapp_teste\"></div> -->\n\n\n  <app-banner-grid></app-banner-grid>\n\n\n\n\n  <app-horizontal-grid [itens]=\"itens\"></app-horizontal-grid>\n\n</div>"
+module.exports = "<app-header>\n</app-header>\n<app-banner-principal [images]='images'></app-banner-principal>\n<!-- <app-menu-departamentos></app-menu-departamentos> -->\n\n\n<div class=\"container\">\n  <app-menu-categoria></app-menu-categoria>\n\n  <!-- <div #dataContainerHomeCorpo01Cont></div> -->\n\n  <!-- <div class=\"spot_webapp_teste\"></div> -->\n\n\n  <app-banner-grid></app-banner-grid>\n\n  <app-horizontal-grid [itens]=\"itens\"></app-horizontal-grid>\n\n  <h3>Para sua Cozinha</h3>\n  <app-horizontal-grid [itens]=\"kitchen\"></app-horizontal-grid>\n\n  <h3>Para sua Sala</h3>\n  <app-horizontal-grid [itens]=\"livingRoom\"></app-horizontal-grid>\n\n  <!-- Para sua cozinha -->\n\n  <!-- Para sua sala -->\n\n\n\n</div>"
 
 /***/ }),
 
@@ -683,9 +673,35 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.loadItens = function () {
         var _this = this;
-        this.product.getProductByCategory(22003, 1).subscribe(function (data) {
-            _this.itens = data.products;
+        this.product.getProductByCategoryId(22004, 0).subscribe(function (data) {
+            // this.itens = data.products;
+            _this.itens = _this.range(data.products, 8);
+            // debugger;
+            // const x = this.srange(0, 3);
         });
+        this.product.getProductByCategoryId(22002, 0).subscribe(function (data) {
+            _this.kitchen = _this.range(data.products, 8);
+        });
+        this.product.getProductByCategoryId(22008, 0).subscribe(function (data) {
+            _this.livingRoom = _this.range(data.products, 8);
+        });
+    };
+    // srange(start, count) {
+    //   return Array.apply(0, Array(count))
+    //     .map(function (element, index) {
+    //       return index + start;
+    //     });
+    // }
+    HomeComponent.prototype.range = function (list, last) {
+        var newList = [];
+        list.forEach(function (value, i) {
+            if (i >= last) {
+                return true;
+            }
+            newList.push(value);
+            console.log('%d: %s', i, value);
+        });
+        return newList;
     };
     return HomeComponent;
 }());
@@ -833,7 +849,7 @@ SubBannerComponent = __decorate([
 /***/ "../../../../../src/app/product/detail/detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n\n<app-menu-departamentos></app-menu-departamentos>\n<div class=\"container product-detail-box\">\n  <div ng-if=\"data\">\n\n    <h3>{{data?.shortDescription}}</h3>\n\n    <div class=\"row\">\n      <div class=\"col-12 col-md-3\">\n        <h5>Caracteristicas</h5>\n        <p>{{data?.shortDescription}}</p>\n       \n      </div>\n      <div class=\"col-12 col-md-6\">\n\n        <div *ngIf=\"images\">\n          <app-gallery [images]=\"images\"></app-gallery>\n        </div>\n\n      </div>\n\n      <div class=\"col-12 col-md-3\">\n\n\n        <p class=\"detail-price-tag\">de: {{data?.priceTag | currency:'BRL':true}}</p>\n        <p class=\"detail-price-offer\">por: {{data?.priceOffer | currency:'BRL':true}} à vista</p>\n        <!-- <p>{{data?.partNumber }}</p> -->\n\n        <div class=\"row detail-row-voltage\">\n          <div class=\"col-12 col-sm-12 col-md-6 btn btn-success detail-voltage\" *ngFor=\"let voltage of data?.voltage\">\n            <input name=\"voltage\" class=\"detail-voltage-radio\" type=\"radio\" value=\"{{voltage.name}}\">{{voltage.name}}\n          </div>\n        </div>\n\n\n\n        <!-- <div class=\"btn-group\" data-toggle=\"buttons\">\n              <label class=\"btn btn-primary active\">\n                <input type=\"radio\" name=\"options\" id=\"option1\" autocomplete=\"off\" checked> Radio 1 (preselected)\n              </label>\n              <label class=\"btn btn-primary\">\n                <input type=\"radio\" name=\"options\" id=\"option2\" autocomplete=\"off\"> Radio 2\n              </label>\n              <label class=\"btn btn-primary\">\n                <input type=\"radio\" name=\"options\" id=\"option3\" autocomplete=\"off\"> Radio 3\n              </label>\n            </div> -->\n\n        <div class=\"detail-group-price-buttons\">\n          <button class=\"btn btn-success btn-detail-custom\">Comprar</button>\n          <button class=\"btn btn-success detail-one-click btn-detail-custom\">Comprar com 1 Click</button>\n        </div>\n\n        <input type=\"number\" placeholder=\"Buscar CEP\" class=\"detail-search-cep\">\n\n        <!-- <div class=\"input-group\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"Buscar CEP\">\n          <span class=\"input-group-btn\">\n            <button class=\"btn btn-secondary\" type=\"button\">Buscar</button>\n          </span>\n        </div> -->\n\n      </div>\n    </div>\n\n    <div [innerHTML]=\"data?.longDescription\"></div>\n\n    <!-- <img src=\"https://prdresources1-a.akamaihd.net{{data?.thumbnail}}\" />\n\n    <p>{{data?.shortDescription}}</p>\n    <p>{{data?.partNumber}}</p>\n    <p>{{data?.buyable}}</p>\n\n    -->\n\n  </div>\n</div>"
+module.exports = "<app-header></app-header>\n\n<app-menu-departamentos></app-menu-departamentos>\n\n<div [hidden]=\"load\">\n  <app-load></app-load>\n</div>\n\n<div [hidden]=\"!error\">\n    <app-not-found></app-not-found>\n</div>\n\n<div [hidden]=\"error || !load\">\n    <div class=\"container product-detail-box\">\n        <div ng-if=\"data\">\n      \n          <h3>{{data?.shortDescription}}</h3>\n      \n          <div class=\"row\">\n            <div class=\"col-12 col-md-3\">\n              <h5>Caracteristicas</h5>\n              <p>{{data?.shortDescription}}</p>\n      \n            </div>\n            <div class=\"col-12 col-md-6\">\n      \n              <div *ngIf=\"images\">\n                <app-gallery [images]=\"images\"></app-gallery>\n              </div>\n      \n            </div>\n      \n            <div class=\"col-12 col-md-3\">\n      \n      \n              <p class=\"detail-price-tag\">de: {{data?.priceTag | currency:'BRL':true}}</p>\n              <p class=\"detail-price-offer\">por: {{data?.priceOffer | currency:'BRL':true}} à vista</p>\n              <!-- <p>{{data?.partNumber }}</p> -->\n      \n              <div class=\"row detail-row-voltage\">\n                <div class=\"col-12 col-sm-12 col-md-6 btn btn-success detail-voltage\" *ngFor=\"let voltage of data?.voltage\">\n                  <input name=\"voltage\" class=\"detail-voltage-radio\" type=\"radio\" value=\"{{voltage.name}}\">{{voltage.name}}\n                </div>\n              </div>\n      \n      \n      \n              <!-- <div class=\"btn-group\" data-toggle=\"buttons\">\n                    <label class=\"btn btn-primary active\">\n                      <input type=\"radio\" name=\"options\" id=\"option1\" autocomplete=\"off\" checked> Radio 1 (preselected)\n                    </label>\n                    <label class=\"btn btn-primary\">\n                      <input type=\"radio\" name=\"options\" id=\"option2\" autocomplete=\"off\"> Radio 2\n                    </label>\n                    <label class=\"btn btn-primary\">\n                      <input type=\"radio\" name=\"options\" id=\"option3\" autocomplete=\"off\"> Radio 3\n                    </label>\n                  </div> -->\n      \n              <div class=\"detail-group-price-buttons\">\n                <button class=\"btn btn-success btn-detail-custom\">Comprar</button>\n                <button class=\"btn btn-success detail-one-click btn-detail-custom\">Comprar com 1 Click</button>\n              </div>\n      \n              <input type=\"number\" placeholder=\"Buscar CEP\" class=\"detail-search-cep\">\n      \n              <!-- <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" placeholder=\"Buscar CEP\">\n                <span class=\"input-group-btn\">\n                  <button class=\"btn btn-secondary\" type=\"button\">Buscar</button>\n                </span>\n              </div> -->\n      \n            </div>\n          </div>\n      \n          <div [innerHTML]=\"data?.longDescription\"></div>\n      \n          <!-- <img src=\"https://prdresources1-a.akamaihd.net{{data?.thumbnail}}\" />\n      \n          <p>{{data?.shortDescription}}</p>\n          <p>{{data?.partNumber}}</p>\n          <p>{{data?.buyable}}</p>\n      \n          -->\n      \n        </div>\n      </div>\n</div>\n"
 
 /***/ }),
 
@@ -882,6 +898,7 @@ var DetailComponent = (function () {
     }
     DetailComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.error = false;
         this.sub = this.route.params.subscribe(function (params) {
             _this.id = +params['id'];
             _this.loadProduct();
@@ -891,8 +908,13 @@ var DetailComponent = (function () {
         var _this = this;
         this.product.getProductById(this.id).subscribe(function (data) {
             console.log(data.json());
+            _this.load = true;
             _this.data = data.json();
             _this.images = data.json().images;
+        }, function (error) {
+            console.log(error);
+            _this.load = true;
+            _this.error = true;
         });
     };
     return DetailComponent;
@@ -1079,12 +1101,18 @@ var ProductService = (function () {
             return res.json().subDepartaments;
         }).catch(function (error) { return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(error.json().error || 'Server error'); });
     };
-    // https://www.fastshop.com.br/wcs/resources/v1/products/byCategory/22002?pageNumber=0
-    // https://www.fastshop.com.br/wcs/resources/v1/products/byCategory/4611686018425142000?pageNumber=0
-    // https://www.fastshop.com.br/wcs/resources/v1/products/topCategory
     ProductService.prototype.getProductByCategory = function (categoryId, pageNumber) {
         return this.http.get(this.url + 'v1/products/byCategory/' + categoryId + '?pageNumber=' + pageNumber).map(function (data) {
             return data.json();
+        });
+    };
+    ProductService.prototype.getProductByCategoryId = function (categoryId, pageNumber, limit) {
+        if (pageNumber === void 0) { pageNumber = 0; }
+        if (limit === void 0) { limit = 4; }
+        // TODO - WS deve ter parametroo a quantiadade
+        return this.http.get(this.url + 'v1/products/byCategory/' + categoryId + '?pageNumber=' + pageNumber).map(function (data) {
+            return data.json();
+            // return data.json();
         });
     };
     ProductService.prototype.getProductById = function (productId) {
@@ -1699,6 +1727,128 @@ MenuComponent = __decorate([
 ], MenuComponent);
 
 //# sourceMappingURL=menu.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/not-found/not-found.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"not-found\">\n    <i class=\"fa fa-exclamation-triangle fa-6\" aria-hidden=\"true\"></i>\n    <p>Ops! A página que você procura não foi encontrada<br>ou não está mais no ar.</p>\n    \n    <a href=\"#\" [routerLink]=\"['/']\">Voltar para a Página Inicial</a>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/not-found/not-found.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".not-found {\n  text-align: center;\n  margin-top: 2em; }\n  .not-found .fa {\n    font-size: 7em; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/not-found/not-found.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotFoundComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var NotFoundComponent = (function () {
+    function NotFoundComponent() {
+    }
+    NotFoundComponent.prototype.ngOnInit = function () {
+    };
+    return NotFoundComponent;
+}());
+NotFoundComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-not-found',
+        template: __webpack_require__("../../../../../src/app/shared/not-found/not-found.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/shared/not-found/not-found.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], NotFoundComponent);
+
+//# sourceMappingURL=not-found.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/page-not-found/page-not-found.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-header></app-header>\n<app-not-found></app-not-found>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/page-not-found/page-not-found.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".not-found {\n  margin-top: 3em; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/page-not-found/page-not-found.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PageNotFoundComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var PageNotFoundComponent = (function () {
+    function PageNotFoundComponent() {
+    }
+    PageNotFoundComponent.prototype.ngOnInit = function () {
+    };
+    return PageNotFoundComponent;
+}());
+PageNotFoundComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-page-not-found',
+        template: __webpack_require__("../../../../../src/app/shared/page-not-found/page-not-found.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/shared/page-not-found/page-not-found.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], PageNotFoundComponent);
+
+//# sourceMappingURL=page-not-found.component.js.map
 
 /***/ }),
 
