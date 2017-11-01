@@ -55,7 +55,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
-// import { HttpClient } from '@angular/common/http';
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -106,12 +105,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__product_detail_detail_component__ = __webpack_require__("../../../../../src/app/product/detail/detail.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__grid_horizontal_grid_horizontal_grid_component__ = __webpack_require__("../../../../../src/app/grid/horizontal-grid/horizontal-grid.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__shared_gallery_gallery_component__ = __webpack_require__("../../../../../src/app/shared/gallery/gallery.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__shared_load_load_component__ = __webpack_require__("../../../../../src/app/shared/load/load.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -167,6 +168,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_24__product_detail_detail_component__["a" /* DetailComponent */],
             __WEBPACK_IMPORTED_MODULE_25__grid_horizontal_grid_horizontal_grid_component__["a" /* HorizontalGridComponent */],
             __WEBPACK_IMPORTED_MODULE_26__shared_gallery_gallery_component__["a" /* GalleryComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__shared_load_load_component__["a" /* LoadComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
@@ -210,7 +212,7 @@ var routes = [
     { path: 'product/:id', component: __WEBPACK_IMPORTED_MODULE_4__product_detail_detail_component__["a" /* DetailComponent */] },
 ];
 var appRoutingProviders = [];
-var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* RouterModule */].forRoot(routes);
+var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(routes);
 //# sourceMappingURL=app.routes.js.map
 
 /***/ }),
@@ -218,7 +220,7 @@ var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* RouterModule 
 /***/ "../../../../../src/app/category/category/category.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n\n<app-menu-departamentos></app-menu-departamentos>\n<app-menu-categoria></app-menu-categoria>\n<div class=\"container\">\n\n  <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid>\n\n</div>"
+module.exports = "<app-header></app-header>\n\n<app-menu-departamentos></app-menu-departamentos>\n<app-menu-categoria></app-menu-categoria>\n\n<div class=\"container\">\n\n  <div [hidden]=\"load\">\n    <app-load></app-load>\n  </div>\n\n  <div *ngIf=\"isNotFound()\">\n    <span>Categoria não localizada</span>\n  </div>\n\n  <div *ngIf=\"load && !isNotFound()\">\n    <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid>\n  </div>\n\n</div>"
 
 /***/ }),
 
@@ -283,9 +285,21 @@ var CategoryComponent = (function () {
     };
     CategoryComponent.prototype.loadProducts = function () {
         var _this = this;
+        this.load = false;
+        this.err = false;
         this.product.getProductByCategory(this.id, this.pageNumber).subscribe(function (params) {
             _this.products = params.products;
+            _this.load = true;
+            _this.err = false;
+        }, function (error) {
+            _this.err = true;
+            _this.load = true;
+            console.log('ERROR : ');
+            console.log(error);
         });
+    };
+    CategoryComponent.prototype.isNotFound = function () {
+        return this.err;
     };
     return CategoryComponent;
 }());
@@ -306,7 +320,7 @@ var _a, _b;
 /***/ "../../../../../src/app/grid/horizontal-grid/horizontal-grid.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-sm-6 col-md-4 col-12 col-xl-3 horizontal-grid-short-description horizontal-grid-box\" *ngFor=\"let item of itens\">\n    <div class=\"horizontal-grid-container\">\n      <p class=\"horizontal-grid-short-description\">{{item.shortDescription}}</p>\n      <a class=\"btn btn-outline-info\" href=\"#\" [routerLink]=\"['/product', item.productID ]\">Mais informações</a>\n\n      <p class=\"star-vote\">★★★★★</p>\n      <img class=\"card-img-top horizontal-grid-img\" src=\"https://prdresources1-a.akamaihd.net/{{item.thumbnail}}\" alt=\"Card image cap\">\n    </div>\n  </div>\n</div>"
+module.exports = "<div [hidden]=\"!load\">\n  <app-load></app-load>\n</div>\n\n<div class=\"row\">\n  <div class=\"col-sm-6 col-md-4 col-12 col-xl-3 horizontal-grid-short-description horizontal-grid-box\" *ngFor=\"let item of itens\">\n    <div class=\"horizontal-grid-container\">\n      <p class=\"horizontal-grid-short-description\">{{item.shortDescription}}</p>\n      <a class=\"btn btn-outline-info\" href=\"#\" [routerLink]=\"['/product', item.productID ]\">Mais informações</a>\n\n      <p class=\"star-vote\">★★★★★</p>\n      <img class=\"card-img-top horizontal-grid-img\" src=\"https://prdresources1-a.akamaihd.net/{{item.thumbnail}}\" alt=\"Card image cap\">\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -345,10 +359,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 var HorizontalGridComponent = (function () {
+    // @Input()
+    // public set itens(itens){
+    //     this.itens = itens;
+    //     console.log('upiii');
+    //     console.log(itens);
+    // }
     function HorizontalGridComponent() {
+        this.load = true;
     }
     HorizontalGridComponent.prototype.ngOnInit = function () {
-        console.log(this.itens);
+        console.log('HorizontalGridComponent start');
+    };
+    HorizontalGridComponent.prototype.ngOnChanges = function () {
+        if (this.itens !== undefined) {
+            console.log('itens set values');
+            this.load = false;
+        }
+        // if ( typeof this.title == 'object' ) {
+        //     this.titleType = 'array';
+        //     // For tablet - only send the last most array item
+        //     this.tabletTitle = [this.title[this.title.length - 1]];     // Has to be in the form of array (to be consistent with other orange header data type)
+        // } else {
+        //     // Title is string - same for tablet
+        //     this.tabletTitle = this.title;
+        // }
+        // // Temporary to show filter button on catalog page
+        // if ( this.page == 'catalog' ) {
+        //     this.showFilterButton = true;
+        // }
     };
     return HorizontalGridComponent;
 }());
@@ -414,7 +453,6 @@ var BannerGridComponent = (function () {
     function BannerGridComponent() {
     }
     BannerGridComponent.prototype.ngOnInit = function () {
-        console.log(this.products);
     };
     return BannerGridComponent;
 }());
@@ -499,7 +537,7 @@ BannerImagemComponent = __decorate([
 /***/ "../../../../../src/app/home/banner-principal/banner-principal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"banner-principal-section\">\n    \n    <ngb-carousel>\n        <ng-template ngbSlide>\n          <img class=\"banner-principal-imagem\" src=\"https://www.fastshop.com.br/wcsstore/FastShop/img/home/2017/10/02/021017_rotativo_02.jpg\" alt=\"Random first slide\">\n        \n        </ng-template>\n        <ng-template ngbSlide>\n          <img class=\"banner-principal-imagem\" src=\"https://www.fastshop.com.br/wcsstore/FastShop/img/home/2017/10/02/021017_rotativo_01.jpg\"  alt=\"Random second slide\">\n         \n        </ng-template>\n        <ng-template ngbSlide>\n          <img  class=\"banner-principal-imagem\" src=\"https://www.fastshop.com.br/wcsstore/FastShop/img/home/2017/10/02/021017_rotativo_03.jpg\" alt=\"Random third slide\">\n         \n        </ng-template>\n      </ngb-carousel>\n      \n</section>\n"
+module.exports = "<section class=\"banner-principal-section\">\n    <ngb-carousel>\n        <ng-template ngbSlide *ngFor=\"let image of images\">\n          <img (click)=\"toggle(image.link)\" class=\"banner-principal-imagem\" src=\"{{image.image}}\" alt=\"Random first slide\">\n        </ng-template>\n    </ngb-carousel>\n</section>\n"
 
 /***/ }),
 
@@ -527,6 +565,7 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BannerPrincipalComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -537,22 +576,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var BannerPrincipalComponent = (function () {
-    function BannerPrincipalComponent() {
+    function BannerPrincipalComponent(router) {
+        this.router = router;
     }
     BannerPrincipalComponent.prototype.ngOnInit = function () {
     };
+    BannerPrincipalComponent.prototype.toggle = function (url) {
+        console.log(url);
+        // this.router.navigate(['/product', 378244]);
+        window.location.href = url;
+    };
     return BannerPrincipalComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], BannerPrincipalComponent.prototype, "images", void 0);
 BannerPrincipalComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-banner-principal',
         template: __webpack_require__("../../../../../src/app/home/banner-principal/banner-principal.component.html"),
         styles: [__webpack_require__("../../../../../src/app/home/banner-principal/banner-principal.component.scss")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object])
 ], BannerPrincipalComponent);
 
+var _a;
 //# sourceMappingURL=banner-principal.component.js.map
 
 /***/ }),
@@ -560,7 +611,7 @@ BannerPrincipalComponent = __decorate([
 /***/ "../../../../../src/app/home/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header>\n</app-header>\n<app-banner-principal></app-banner-principal>\n<!-- <app-menu-departamentos></app-menu-departamentos> -->\n\n<div class=\"container\">\n  <app-menu-categoria></app-menu-categoria>\n\n  <div #dataContainerHomeCorpo01Cont></div>\n\n  <!-- <div class=\"spot_webapp_teste\"></div> -->\n\n  <app-banner-grid></app-banner-grid>\n\n\n<app-horizontal-grid [itens]=\"itens\"></app-horizontal-grid>\n\n\n\n\n</div>  "
+module.exports = "<app-header>\n</app-header>\n<app-banner-principal [images]='images'></app-banner-principal>\n<!-- <app-menu-departamentos></app-menu-departamentos> -->\n\n\n<div class=\"container\">\n  <app-menu-categoria></app-menu-categoria>\n\n  <!-- <div #dataContainerHomeCorpo01Cont></div> -->\n\n  <!-- <div class=\"spot_webapp_teste\"></div> -->\n\n\n  <app-banner-grid></app-banner-grid>\n\n\n\n\n  <app-horizontal-grid [itens]=\"itens\"></app-horizontal-grid>\n\n</div>"
 
 /***/ }),
 
@@ -617,15 +668,22 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.loadSpot = function () {
         var _this = this;
-        this.spot.getSpot('Home_Corpo_01_cont')
+        this.spot.getSpot('Home_Topo_01_cont')
             .subscribe(function (data) {
-            _this.dataContainerHomeCorpo01Cont.nativeElement.innerHTML = data._body;
+            var inicio = data._body.indexOf('var ObjData = ');
+            var fim = data._body.indexOf('"type": "json"');
+            var result = data._body.substring(inicio + 13, fim - 9) + ']}';
+            var obj = JSON.parse(result);
+            var img = [];
+            obj.carousel.forEach(function (d) {
+                img.push({ image: obj.pathname + d.image, link: d.link });
+            });
+            _this.images = img;
         });
     };
     HomeComponent.prototype.loadItens = function () {
         var _this = this;
-        this.product.getProductByCategory(22002, 1).subscribe(function (data) {
-            console.log(data);
+        this.product.getProductByCategory(22003, 1).subscribe(function (data) {
             _this.itens = data.products;
         });
     };
@@ -635,20 +693,16 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('dataContainer'),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
 ], HomeComponent.prototype, "dataContainer", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('dataContainerHomeCorpo01Cont'),
-    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _b || Object)
-], HomeComponent.prototype, "dataContainerHomeCorpo01Cont", void 0);
 HomeComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-home',
         template: __webpack_require__("../../../../../src/app/home/home/home.component.html"),
         styles: [__webpack_require__("../../../../../src/app/home/home/home.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__service_spot_service__["a" /* SpotService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_spot_service__["a" /* SpotService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__service_storage_service__["a" /* StorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_storage_service__["a" /* StorageService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__service_product_service__["a" /* ProductService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_product_service__["a" /* ProductService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__service_spot_service__["a" /* SpotService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_spot_service__["a" /* SpotService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__service_storage_service__["a" /* StorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_storage_service__["a" /* StorageService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__service_product_service__["a" /* ProductService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_product_service__["a" /* ProductService */]) === "function" && _d || Object])
 ], HomeComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d;
 //# sourceMappingURL=home.component.js.map
 
 /***/ }),
@@ -1019,6 +1073,12 @@ var ProductService = (function () {
             return res.json().departaments;
         }).catch(function (error) { return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(error.json().error || 'Server error'); });
     };
+    ProductService.prototype.getSubCategory = function (id) {
+        return this.http.get(this.url + 'v1/products/subCategory/' + id)
+            .map(function (res) {
+            return res.json().subDepartaments;
+        }).catch(function (error) { return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(error.json().error || 'Server error'); });
+    };
     // https://www.fastshop.com.br/wcs/resources/v1/products/byCategory/22002?pageNumber=0
     // https://www.fastshop.com.br/wcs/resources/v1/products/byCategory/4611686018425142000?pageNumber=0
     // https://www.fastshop.com.br/wcs/resources/v1/products/topCategory
@@ -1120,11 +1180,15 @@ var StorageService = (function () {
     function StorageService(http, produto) {
         this.http = http;
         this.produto = produto;
+        this.departaments = [];
     }
-    StorageService.prototype.obterStorage = function (nome) {
+    StorageService.prototype.obterStorage = function (nome, id) {
+        if (id === void 0) { id = ''; }
         switch (nome) {
             case 'menu-departamento':
                 return this.produto.getCategory();
+            case 'sub-departamento':
+                return this.produto.getSubCategory(id);
             case 'banner-principal':
                 // TODO
                 break;
@@ -1145,10 +1209,26 @@ var StorageService = (function () {
         });
     };
     StorageService.prototype.updateCache = function (name, version) {
-        this.obterStorage(name).subscribe(function (data) {
-            var newJson = { 'version': version, data: data };
-            localStorage.setItem(name, JSON.stringify(newJson));
-            return data;
+        // this.obterStorage(name).subscribe(
+        //   data => {
+        //     const newJson = { 'version': version, data };
+        //     localStorage.setItem(name, JSON.stringify(newJson));
+        //     return data;
+        //   });
+        var _this = this;
+        debugger;
+        this.obterStorage('menu-departamento').subscribe(function (data) {
+            if (data !== undefined) {
+                data.forEach(function (category) {
+                    _this.obterStorage('sub-departamento', category.uniqueID).subscribe(function (sub) {
+                        category.sub = sub;
+                        _this.departaments.push(category);
+                        var dataStorage = { 'version': version, data: data };
+                        localStorage.setItem(name, JSON.stringify(dataStorage));
+                        // localStorage.setItem('menu-departamento', JSON.stringify(this.departaments));
+                    });
+                });
+            }
         });
     };
     StorageService.prototype.checkCache = function (lastVersion) {
@@ -1235,7 +1315,7 @@ FooterComponent = __decorate([
 /***/ "../../../../../src/app/shared/gallery/gallery.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<ngx-gallery class=\"gallery-container\" style=\"z-index: 1;\" [options]=\"galleryOptions\" [images]=\"galleryImages\"></ngx-gallery>\n"
+module.exports = "<ngx-gallery class=\"gallery-container\" style=\"z-index: 1;\" [options]=\"galleryOptions\" [images]=\"galleryImages\">\n</ngx-gallery>"
 
 /***/ }),
 
@@ -1289,9 +1369,6 @@ var GalleryComponent = (function () {
                 thumbnailsColumns: 5
             }
         ];
-        // this.images.forEach(image => {
-        //   console.log(image);
-        // });
         this.galleryImages = [];
         this.images.forEach(function (img) {
             var item = {
@@ -1325,7 +1402,7 @@ GalleryComponent = __decorate([
 /***/ "../../../../../src/app/shared/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"spot-header-top\">\n  <div #fixoHeader></div>\n</div>\n<div class=\"row\">\n  <div class=\"col-12\">\n    <section>\n\n      <div class=\"\" style=\"padding-left: 0; padding-right: 0;\">\n        <header class=\"navbar  navbar-fixed-top navbar-expand-lg\">\n\n          <!-- <div class=\"header-group\"> -->\n          <a href=\"#\" [routerLink]=\"['/']\">\n            <img src=\"https://prdresources1-a.akamaihd.net/wcsstore/FastShop/Criacao/Atualizacoes/logoFastShopHome.png\" alt=\"Fast Shop\"\n              class=\"header-logo-home\" />\n          </a>\n\n          <div class=\"nav-menu\">\n            <a class=\"navbar-brand menu-header\" href=\"#/\">Nossas Lojas</a>\n            <a class=\"navbar-brand menu-header\" href=\"#/\">Serviços</a>\n            <a class=\"navbar-brand menu-header\" href=\"#/\">Atendimento</a>\n            <a class=\"navbar-brand menu-header\" href=\"#/\">Acompanhe seus Pedidos</a>\n            <a class=\"navbar-brand menu-header\" href=\"#/\">Minha Conta</a>\n            <app-menu-departamentos></app-menu-departamentos>\n          </div>\n\n          <!-- </div> -->\n\n\n          <!-- \n                <button aria-controls=\"navbarContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\" class=\"navbar-toggler navbar-toggler-right\"\n                  type=\"button\">\n                        <span class=\"navbar-toggler-icon\"></span>\n                      </button> -->\n\n\n        </header>\n\n      </div>\n\n    </section>\n  </div>\n</div>"
+module.exports = "<div class=\"spot-header-top\">\n  <div #fixoHeader></div>\n</div>\n<div class=\"row\">\n  <div class=\"col-12\">\n    <section>\n\n      <div class=\"\" style=\"padding-left: 0; padding-right: 0;\">\n        <header class=\"navbar  navbar-fixed-top navbar-expand-lg\">\n\n          <a href=\"#\" [routerLink]=\"['/']\">\n            <img src=\"https://prdresources1-a.akamaihd.net/wcsstore/FastShop/Criacao/Atualizacoes/logoFastShopHome.png\" alt=\"Fast Shop\"\n              class=\"header-logo-home\" />\n          </a>\n\n          <div class=\"nav-menu\">\n            <a class=\"navbar-brand menu-header\" href=\"#/\">Nossas Lojas</a>\n            <a class=\"navbar-brand menu-header\" href=\"#/\">Serviços</a>\n            <a class=\"navbar-brand menu-header\" href=\"#/\">Atendimento</a>\n            <a class=\"navbar-brand menu-header\" href=\"#/\">Acompanhe seus Pedidos</a>\n            <a class=\"navbar-brand menu-header\" href=\"#/\">Minha Conta</a>\n            <app-menu-departamentos></app-menu-departamentos>\n          </div>\n\n        </header>\n\n      </div>\n\n    </section>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1337,7 +1414,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "header {\n  background: #0a4a69; }\n\nheader {\n  color: white; }\n\n.navbar-brand {\n  color: white; }\n\n.nav-menu a.navbar-brand.menu-header {\n  font-size: 12px; }\n\n.nav-menu {\n  text-align: right;\n  margin-left: 10%; }\n\n.menu-header[_ngcontent-c2] {\n  font-size: 0.1em; }\n\n.header-logo-home {\n  height: 30px; }\n", ""]);
+exports.push([module.i, "header {\n  background: #0a4a69; }\n\nheader {\n  color: white; }\n\n.navbar-brand {\n  color: white; }\n\n.nav-menu a.navbar-brand.menu-header {\n  font-size: 12px; }\n\n.nav-menu {\n  text-align: right;\n  margin-left: 10%; }\n\n.menu-header[_ngcontent-c2] {\n  font-size: 0.1em; }\n\n.header-logo-home {\n  height: 30px; }\n\n.dropdown-submenu {\n  position: relative; }\n\n.dropdown-submenu > .dropdown-menu {\n  top: 0;\n  left: 100%;\n  margin-top: -6px;\n  margin-left: -1px;\n  border-radius: 4px; }\n\n.dropdown-submenu:hover > .dropdown-menu {\n  display: block; }\n\n.dropdown-submenu > a:after {\n  display: block;\n  content: \" \";\n  float: right;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid;\n  border-width: 5px 0 5px 5px;\n  border-left-color: #ccc;\n  margin-top: 5px;\n  margin-right: -10px; }\n\n.dropdown-submenu:hover > a:after {\n  border-left-color: #ccc; }\n\n.dropdown-submenu.pull-left {\n  float: none; }\n\n.dropdown-submenu.pull-left > .dropdown-menu {\n  left: -100%;\n  margin-left: 10px;\n  border-radius: 4px; }\n", ""]);
 
 // exports
 
@@ -1399,10 +1476,71 @@ var _a, _b;
 
 /***/ }),
 
+/***/ "../../../../../src/app/shared/load/load.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container spinner\">\n  <i class=\"fa fa-spinner fa-spin\"></i>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/load/load.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".spinner {\n  text-align: center;\n  font-size: 25px;\n  margin-top: 2em; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/load/load.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoadComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LoadComponent = (function () {
+    function LoadComponent() {
+    }
+    LoadComponent.prototype.ngOnInit = function () {
+    };
+    return LoadComponent;
+}());
+LoadComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-load',
+        template: __webpack_require__("../../../../../src/app/shared/load/load.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/shared/load/load.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], LoadComponent);
+
+//# sourceMappingURL=load.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/shared/menu-departamentos/menu-departamentos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div class=\"row\">\n  <div class=\"col\"> -->\n    <div ngbDropdown class=\"d-inline-block\">\n      <button class=\"btn btn-outline-primary menu-departament-dropdown\" id=\"menu-departamentos\" ngbDropdownToggle>Departamentos</button>\n      <div ngbDropdownMenu aria-labelledby=\"menu-departamentos\" style=\"z-index:99999\">\n        <!-- <button class=\"dropdown-item\">Action - 1</button> -->\n        <a class=\"dropdown-item\" *ngFor=\"let departament of departaments\" href=\"#\" [routerLink]=\"['/category', departament.uniqueID]\">{{departament.name}}</a>\n      </div>\n    </div>\n  <!-- </div>\n\n</div> -->\n\n"
+module.exports = "<div ngbDropdown class=\"d-inline-block\">\n  <button class=\"btn btn-outline-primary menu-departament-dropdown\" id=\"menu-departamentos\" ngbDropdownToggle>Departamentos</button>\n  <div ngbDropdownMenu aria-labelledby=\"menu-departamentos\" style=\"z-index:99999\">\n\n    <div *ngFor=\"let departament of departaments\">\n      <a class=\"dropdown-item\" id=\"{{departament.uniqueID}}\" (mouseenter) =\"mouseEnter(departament.uniqueID)\" (mouseleave) =\"mouseLeave(departament.uniqueID)\" href=\"#\" [routerLink]=\"['/category', departament.uniqueID]\">{{departament.name}}</a>\n        <div class=\"menu-departamento-sub-container\" id='menu-departamento-sub-{{departament.uniqueID}}' [ngClass]=\"{active: isActive(departament.uniqueID)}\">\n            <div *ngFor=\"let sub of departament.sub\">\n                <a href=\"#\" class=\"menu-departamento-sub\" *ngIf=(sub.identifier) [routerLink]=\"['/category', sub.uniqueID]\">{{ sub.name }}</a>\n              </div>\n        </div>\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1414,7 +1552,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".menu-departament-dropdown {\n  color: white;\n  border: white;\n  font-size: 12px; }\n\n.btn-outline-primary.active, .btn-outline-primary:active, .show > .btn-outline-primary.dropdown-toggle {\n  border-color: transparent;\n  background-color: transparent;\n  box-shadow: transparent; }\n\n.btn-outline-primary:hover {\n  background-color: transparent;\n  box-shadow: 0 0 0 3px rgba(0, 0, 255, 0); }\n", ""]);
+exports.push([module.i, ".menu-departament-dropdown {\n  color: white;\n  border: white;\n  font-size: 12px; }\n\n.btn-outline-primary.active, .btn-outline-primary:active, .show > .btn-outline-primary.dropdown-toggle {\n  border-color: transparent;\n  background-color: transparent;\n  box-shadow: transparent; }\n\n.btn-outline-primary:hover {\n  background-color: transparent;\n  box-shadow: 0 0 0 3px rgba(0, 0, 255, 0); }\n\n.menu-departamento-sub {\n  padding-left: 43px;\n  color: gray;\n  font-size: 14px; }\n\n.active a {\n  color: red;\n  display: none; }\n\n.menu-departamento-sub-container {\n  display: block; }\n", ""]);
 
 // exports
 
@@ -1448,6 +1586,8 @@ var MenuDepartamentosComponent = (function () {
     function MenuDepartamentosComponent(product, storage) {
         this.product = product;
         this.storage = storage;
+        this.departaments = [];
+        this.selected = false;
     }
     MenuDepartamentosComponent.prototype.ngOnInit = function () {
         this.loadDepartamens();
@@ -1462,10 +1602,28 @@ var MenuDepartamentosComponent = (function () {
         else {
             this.storage.obterStorage('menu-departamento').subscribe(function (data) {
                 if (data !== undefined) {
-                    _this.departaments = data;
+                    data.forEach(function (category) {
+                        _this.storage.obterStorage('sub-departamento', category.uniqueID).subscribe(function (sub) {
+                            category.sub = sub;
+                            _this.departaments.push(category);
+                            var dataStorage = { 'version': 1.0, data: data };
+                            localStorage.setItem('menu-departamento', JSON.stringify(dataStorage));
+                        });
+                    });
                 }
             });
         }
+    };
+    MenuDepartamentosComponent.prototype.mouseEnter = function (e) {
+        this.select(e);
+    };
+    MenuDepartamentosComponent.prototype.mouseLeave = function (e) {
+    };
+    MenuDepartamentosComponent.prototype.select = function (item) {
+        this.selected = item;
+    };
+    MenuDepartamentosComponent.prototype.isActive = function (item) {
+        return this.selected !== item;
     };
     return MenuDepartamentosComponent;
 }());
