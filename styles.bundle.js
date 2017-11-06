@@ -92,7 +92,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nbody {\n  background: white; }\n\n.detail-price-tag {\n  font-size: 0.8em;\n  color: gray;\n  margin: 0px; }\n\n.detail-price-offer {\n  font-size: 0.9em;\n  color: green; }\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nbody {\n  background: white; }\n\n.detail-price-tag {\n  font-size: 0.8em;\n  color: gray;\n  margin: 0px; }\n\n.detail-price-offer {\n  font-size: 0.9em;\n  color: green; }\n\n.paddingDiv:focus {\n  outline: 0; }\n\n.outline-fix {\n  outline: #ffffff solid; }\n", ""]);
 
 // exports
 
