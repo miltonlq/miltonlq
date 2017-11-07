@@ -279,9 +279,9 @@ var CategoryComponent = (function () {
     CategoryComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.sub = this.route.params.subscribe(function (params) {
-            _this.id = +params['id'];
+            _this.id = params['id'];
             if (params['pageNumber']) {
-                _this.pageNumber = +params['pageNumber'];
+                _this.pageNumber = params['pageNumber'];
             }
             else {
                 _this.pageNumber = 0;
