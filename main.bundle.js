@@ -605,7 +605,7 @@ var _a;
 /***/ "../../../../../src/app/home/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header>\n</app-header>\n\n<div class=\"row top-fix\">\n  <app-banner-principal [images]='images'></app-banner-principal>\n</div>\n\n<!-- <app-menu-departamentos></app-menu-departamentos> -->\n\n\n<div class=\"container\">\n  <app-menu-categoria></app-menu-categoria>\n\n  <!-- <div #dataContainerHomeCorpo01Cont></div> -->\n\n  <!-- <div class=\"spot_webapp_teste\"></div> -->\n\n\n  <app-banner-grid></app-banner-grid>\n\n  <app-horizontal-grid [itens]=\"itens\"></app-horizontal-grid>\n\n  <h3>Para sua Cozinha</h3>\n  <app-horizontal-grid [itens]=\"kitchen\"></app-horizontal-grid>\n\n  <h3>Para sua Sala</h3>\n  <app-horizontal-grid [itens]=\"livingRoom\"></app-horizontal-grid>\n\n  <!-- Para sua cozinha -->\n\n  <!-- Para sua sala -->\n\n\n\n</div>"
+module.exports = "<app-header>\n</app-header>\n\n<div class=\"top-fix\">\n  <app-banner-principal [images]='images'></app-banner-principal>\n</div>\n\n<!-- <app-menu-departamentos></app-menu-departamentos> -->\n\n\n<div class=\"container\">\n  <app-menu-categoria></app-menu-categoria>\n\n  <!-- <div #dataContainerHomeCorpo01Cont></div> -->\n\n  <!-- <div class=\"spot_webapp_teste\"></div> -->\n\n\n  <app-banner-grid></app-banner-grid>\n\n  <app-horizontal-grid [itens]=\"itens\"></app-horizontal-grid>\n\n  <h3>Para sua Cozinha</h3>\n  <app-horizontal-grid [itens]=\"kitchen\"></app-horizontal-grid>\n\n  <h3>Para sua Sala</h3>\n  <app-horizontal-grid [itens]=\"livingRoom\"></app-horizontal-grid>\n\n  <!-- Para sua cozinha -->\n\n  <!-- Para sua sala -->\n\n\n\n</div>"
 
 /***/ }),
 
