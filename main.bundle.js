@@ -1790,7 +1790,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".not-found {\n  text-align: center;\n  margin-top: 2em; }\n  .not-found .fa {\n    font-size: 7em; }\n", ""]);
+exports.push([module.i, ".not-found {\n  text-align: center;\n  margin-top: 4em; }\n  .not-found .fa {\n    font-size: 7em; }\n", ""]);
 
 // exports
 
