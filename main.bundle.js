@@ -108,12 +108,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__shared_load_load_component__ = __webpack_require__("../../../../../src/app/shared/load/load.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__shared_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/shared/not-found/not-found.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__shared_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/shared/page-not-found/page-not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pipe_slugify__ = __webpack_require__("../../../../../src/app/pipe/slugify.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -175,6 +177,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_27__shared_load_load_component__["a" /* LoadComponent */],
             __WEBPACK_IMPORTED_MODULE_28__shared_not_found_not_found_component__["a" /* NotFoundComponent */],
             __WEBPACK_IMPORTED_MODULE_29__shared_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__pipe_slugify__["a" /* SlugifyPipe */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
@@ -215,9 +218,9 @@ AppModule = __decorate([
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: __WEBPACK_IMPORTED_MODULE_2__home_home_home_component__["a" /* HomeComponent */] },
-    { path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_3__category_category_category_component__["a" /* CategoryComponent */] },
+    { path: 'category/:id/:seo', component: __WEBPACK_IMPORTED_MODULE_3__category_category_category_component__["a" /* CategoryComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_1__seguranca_login_login_component__["a" /* LoginComponent */] },
-    { path: 'product/:id', component: __WEBPACK_IMPORTED_MODULE_4__product_detail_detail_component__["a" /* DetailComponent */] },
+    { path: 'product/:id/:seo', component: __WEBPACK_IMPORTED_MODULE_4__product_detail_detail_component__["a" /* DetailComponent */] },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_5__shared_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */] }
 ];
 var appRoutingProviders = [];
@@ -329,7 +332,7 @@ var _a, _b;
 /***/ "../../../../../src/app/grid/horizontal-grid/horizontal-grid.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [hidden]=\"!load\">\n  <app-load></app-load>\n</div>\n\n<div class=\"row\">\n  <div class=\"col-sm-6 col-md-4 col-12 col-xl-3 horizontal-grid-short-description horizontal-grid-box\" *ngFor=\"let item of itens\">\n    <div class=\"horizontal-grid-container\">\n      <p class=\"horizontal-grid-short-description\" [routerLink]=\"['/product', item.productID ]\">{{item.shortDescription}} <br> <span class=\"star-vote\">★★★★★</span></p>\n\n      \n\n      <!-- <a class=\"btn btn-outline-info\" href=\"#\" [routerLink]=\"['/product', item.productID ]\">Mais informações</a> -->\n\n      <!-- <p class=\"star-vote\">★★★★★</p> -->\n      <a href=\"#\" [routerLink]=\"['/product', item.productID ]\"><img class=\"card-img-top horizontal-grid-img\" src=\"https://prdresources1-a.akamaihd.net/{{item.thumbnail}}\" alt=\"Card image cap\"></a>\n      \n\n      <p _ngcontent-c1=\"\" class=\"detail-price-tag\">de: R$ 9.999,00</p>\n      <p _ngcontent-c1=\"\" class=\"detail-price-offer\">por: R$ 1.999,90 à vista</p>\n    </div>\n  </div>\n</div>"
+module.exports = "<div [hidden]=\"!load\">\n  <app-load></app-load>\n</div>\n\n<div class=\"row\">\n  <div class=\"col-sm-6 col-md-4 col-12 col-xl-3 horizontal-grid-short-description horizontal-grid-box\" *ngFor=\"let item of itens\">\n    <div class=\"horizontal-grid-container\">\n      <p class=\"horizontal-grid-short-description\" [routerLink]=\"['/product', item.productID, item.shortDescription | slugify]\">{{item.shortDescription}} <br> <span class=\"star-vote\">★★★★★</span></p>\n\n      <!-- <a class=\"btn btn-outline-info\" href=\"#\" [routerLink]=\"['/product', item.productID ]\">Mais informações</a> -->\n\n      <!-- <p class=\"star-vote\">★★★★★</p> -->\n      <a href=\"#\" [routerLink]=\"['/product', item.productID, item.shortDescription | slugify ]\"><img class=\"card-img-top horizontal-grid-img\" src=\"https://prdresources1-a.akamaihd.net/{{item.thumbnail}}\" alt=\"Card image cap\"></a>\n      \n\n      <p _ngcontent-c1=\"\" class=\"detail-price-tag\">de: R$ 9.999,00</p>\n      <p _ngcontent-c1=\"\" class=\"detail-price-offer\">por: R$ 1.999,90 à vista</p>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -844,6 +847,46 @@ SubBannerComponent = __decorate([
 ], SubBannerComponent);
 
 //# sourceMappingURL=sub-banner.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pipe/slugify.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SlugifyPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var SlugifyPipe = (function () {
+    function SlugifyPipe() {
+    }
+    SlugifyPipe.prototype.transform = function (str) {
+        return str.toString().toLowerCase()
+            .replace(/\s+/g, '-')
+            .replace(/[àáâãäå]/g, 'a')
+            .replace(/[éê]/g, 'e')
+            .replace(/[îé]/g, 'i')
+            .replace(/[ôóõ]/g, 'o')
+            .replace(/[ûú]/g, 'u')
+            .replace(/[ç]/g, 'c')
+            .replace(/[^\w\-]+/g, '')
+            .replace(/\-\-+/g, '-')
+            .replace(/^-+/, '')
+            .replace(/-+$/, '');
+    };
+    return SlugifyPipe;
+}());
+SlugifyPipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: 'slugify' })
+], SlugifyPipe);
+
+//# sourceMappingURL=slugify.js.map
 
 /***/ }),
 
@@ -1569,7 +1612,7 @@ LoadComponent = __decorate([
 /***/ "../../../../../src/app/shared/menu-departamentos/menu-departamentos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div ngbDropdown class=\"d-inline-block\">\n  <button class=\"btn btn-outline-primary menu-departament-dropdown\" id=\"menu-departamentos\" ngbDropdownToggle>Departamentos</button>\n  <div ngbDropdownMenu aria-labelledby=\"menu-departamentos\" style=\"z-index:99999\">\n\n    <div *ngFor=\"let departament of departaments\">\n      <a class=\"dropdown-item\" id=\"{{departament.uniqueID}}\" (mouseenter) =\"mouseEnter(departament.uniqueID)\" (mouseleave) =\"mouseLeave(departament.uniqueID)\" href=\"#\" [routerLink]=\"['/category', departament.uniqueID]\">{{departament.name}}</a>\n        <div class=\"menu-departamento-sub-container\" id='menu-departamento-sub-{{departament.uniqueID}}' [ngClass]=\"{active: isActive(departament.uniqueID)}\">\n            <div *ngFor=\"let sub of departament.sub\">\n                <a href=\"#\" class=\"menu-departamento-sub\" *ngIf=(sub.identifier) [routerLink]=\"['/category', sub.uniqueID]\">{{ sub.name }}</a>\n              </div>\n        </div>\n    </div>\n\n  </div>\n</div>"
+module.exports = "<div ngbDropdown class=\"d-inline-block\">\n  <button class=\"btn btn-outline-primary menu-departament-dropdown\" id=\"menu-departamentos\" ngbDropdownToggle>Departamentos</button>\n  <div ngbDropdownMenu aria-labelledby=\"menu-departamentos\" style=\"z-index:99999\">\n\n    <div *ngFor=\"let departament of departaments\">\n      <a class=\"dropdown-item\" id=\"{{departament.uniqueID}}\" (mouseenter) =\"mouseEnter(departament.uniqueID)\" (mouseleave) =\"mouseLeave(departament.uniqueID)\" href=\"#\" [routerLink]=\"['/category', departament.uniqueID, departament.name | slugify]\">{{departament.name}}</a>\n        <div class=\"menu-departamento-sub-container\" id='menu-departamento-sub-{{departament.uniqueID}}' [ngClass]=\"{active: isActive(departament.uniqueID)}\">\n            <div *ngFor=\"let sub of departament.sub\">\n                <a href=\"#\" class=\"menu-departamento-sub\" *ngIf=(sub.identifier) [routerLink]=\"['/category', sub.uniqueID, departament.identifier | slugify]\">{{ sub.name }}</a>\n             \n              </div>\n        </div>\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1634,6 +1677,7 @@ var MenuDepartamentosComponent = (function () {
                     data.forEach(function (category) {
                         _this.storage.obterStorage('sub-departamento', category.uniqueID).subscribe(function (sub) {
                             category.sub = sub;
+                            console.log('sub : ' + sub);
                             _this.departaments.push(category);
                             var dataStorage = { 'version': 1.0, data: data };
                             localStorage.setItem('menu-departamento', JSON.stringify(dataStorage));
