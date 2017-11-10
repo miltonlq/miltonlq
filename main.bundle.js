@@ -239,7 +239,7 @@ var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule 
 /***/ "../../../../../src/app/category/category/category.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n\n<div class=\"top-fix\"></div>\n<app-menu-categoria></app-menu-categoria>\n\n<div class=\"container\">\n\n  <div class=\"row\">\n    <div class=\"col-md-3\">\n      <app-filter #child [filters]=\"filters\"></app-filter>\n\n    </div>\n    <div class=\"col-md-9\">\n      <div *ngIf=\"!isNotFound()\">\n        <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid>\n      </div>\n      <div [hidden]=\"load\">\n        <app-load></app-load>\n      </div>\n\n      <div class=\"product-not-found\" *ngIf=\"isNotFound()\">\n        <h3>Produto não localizado</h3>\n      </div>\n\n    </div>\n  </div>\n\n  <div class=\"search-results\" infinite-scroll [infiniteScrollDistance]=\"4\" [infiniteScrollThrottle]=\"300\" (scrolled)=\"onScroll()\">\n  </div>\n\n</div>"
+module.exports = "<app-header></app-header>\n\n<div class=\"top-fix\"></div>\n<app-menu-categoria></app-menu-categoria>\n\n<div class=\"container\">\n\n  <div class=\"row\">\n    <div class=\"col-md-3\">\n      <app-filter #child [filters]=\"filters\"></app-filter>\n\n    </div>\n    <div class=\"col-md-9\">\n      <div *ngIf=\"!isNotFound()\">\n        <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid>\n      </div>\n      <div [hidden]=\"load\">\n        <app-load></app-load>\n      </div>\n\n      <div class=\"product-not-found\" *ngIf=\"isNotFound() && load\">\n        <h3>Produto não localizado</h3>\n      </div>\n\n    </div>\n  </div>\n\n  <div class=\"search-results\" infinite-scroll [infiniteScrollDistance]=\"4\" [infiniteScrollThrottle]=\"300\" (scrolled)=\"onScroll()\">\n  </div>\n\n</div>"
 
 /***/ }),
 
@@ -304,6 +304,7 @@ var CategoryComponent = (function () {
             _this.pageNumber = 0;
             _this.filterValue = '';
             _this.filters = [];
+            _this.err = true;
             if (params['pageNumber']) {
                 _this.pageNumber = params['pageNumber'];
             }
@@ -361,7 +362,7 @@ var CategoryComponent = (function () {
         var _this = this;
         if (filter === void 0) { filter = ''; }
         this.load = false;
-        this.err = false;
+        this.err = true;
         if (filter !== '') {
             this.product.getProductByFilter(this.id, filter, this.pageNumber).subscribe(function (params) {
                 _this.products = params.products;
@@ -419,6 +420,10 @@ var CategoryComponent = (function () {
                 _this.load = !_this.load;
             });
         }
+    };
+    CategoryComponent.prototype.ops = function () {
+        this.err = !this.err;
+        console.log(this.err);
     };
     return CategoryComponent;
 }());
@@ -508,6 +513,7 @@ var FilterComponent = (function () {
             var i = this.filterList.findIndex(function (y) { return (y.group === value && y.entryValue === entryValue); });
             this.filterList.splice(i, 1);
         }
+        // window.scrollTo(0, 0);
         this.subject.next(this.filterList);
     };
     FilterComponent.prototype.notifyMe = function (e) {
