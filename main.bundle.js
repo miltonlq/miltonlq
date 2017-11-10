@@ -239,7 +239,7 @@ var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule 
 /***/ "../../../../../src/app/category/category/category.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n\n<!-- <app-menu-departamentos></app-menu-departamentos> -->\n<div class=\"top-fix\"></div>\n<app-menu-categoria></app-menu-categoria>\n\n<div class=\"container\">\n\n  <!-- <div [hidden]=\"load\">\n    <app-load></app-load>\n  </div> -->\n\n  <div *ngIf=\"isNotFound()\">\n    <app-not-found></app-not-found>\n  </div>\n\n\n  <div class=\"row\">\n    <div class=\"col-md-3\">\n      <!-- <app-filter [filters]=\"filters\"></app-filter> -->\n      <app-filter #child [filters]=\"filters\"></app-filter>\n\n    </div>\n    <div class=\"col-md-9\">\n        <div *ngIf=\"!isNotFound()\">\n            <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid>\n          </div>\n    </div>\n  </div>\n\n  <div [hidden]=\"load\">\n    <app-load></app-load>\n  </div> \n\n  <div class=\"search-results\" infinite-scroll [infiniteScrollDistance]=\"4\" [infiniteScrollThrottle]=\"300\" (scrolled)=\"onScroll()\">\n  </div>\n\n</div>"
+module.exports = "<app-header></app-header>\n\n<div class=\"top-fix\"></div>\n<app-menu-categoria></app-menu-categoria>\n\n<div class=\"container\">\n\n  <div class=\"row\">\n    <div class=\"col-md-3\">\n      <app-filter #child [filters]=\"filters\"></app-filter>\n\n    </div>\n    <div class=\"col-md-9\">\n      <div *ngIf=\"!isNotFound()\">\n        <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid>\n      </div>\n      <div [hidden]=\"load\">\n        <app-load></app-load>\n      </div>\n\n      <div class=\"product-not-found\" *ngIf=\"isNotFound()\">\n        <h3>Produto não localizado</h3>\n      </div>\n\n    </div>\n  </div>\n\n  <div class=\"search-results\" infinite-scroll [infiniteScrollDistance]=\"4\" [infiniteScrollThrottle]=\"300\" (scrolled)=\"onScroll()\">\n  </div>\n\n</div>"
 
 /***/ }),
 
@@ -251,7 +251,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".product-not-found {\n  text-align: center;\n  margin: 20px; }\n", ""]);
 
 // exports
 
