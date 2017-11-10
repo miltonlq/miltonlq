@@ -239,7 +239,7 @@ var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule 
 /***/ "../../../../../src/app/category/category/category.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n\n<!-- <app-menu-departamentos></app-menu-departamentos> -->\n<div class=\"top-fix\"></div>\n<app-menu-categoria></app-menu-categoria>\n\n<div class=\"container\">\n\n  <div [hidden]=\"load\">\n    <app-load></app-load>\n  </div>\n\n  <div *ngIf=\"isNotFound()\">\n    <app-not-found></app-not-found>\n  </div>\n\n\n  <div class=\"row\">\n    <div class=\"col-md-3\">\n      <!-- <app-filter [filters]=\"filters\"></app-filter> -->\n      <app-filter #child [filters]=\"filters\"></app-filter>\n\n    </div>\n    <div class=\"col-md-9\">\n        <div *ngIf=\"load && !isNotFound()\">\n            <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid>\n          </div>\n    </div>\n  </div>\n\n\n \n\n  <div class=\"search-results\" infinite-scroll [infiniteScrollDistance]=\"4\" [infiniteScrollThrottle]=\"300\" (scrolled)=\"onScroll()\">\n  </div>\n\n</div>"
+module.exports = "<app-header></app-header>\n\n<!-- <app-menu-departamentos></app-menu-departamentos> -->\n<div class=\"top-fix\"></div>\n<app-menu-categoria></app-menu-categoria>\n\n<div class=\"container\">\n\n  <!-- <div [hidden]=\"load\">\n    <app-load></app-load>\n  </div> -->\n\n  <div *ngIf=\"isNotFound()\">\n    <app-not-found></app-not-found>\n  </div>\n\n\n  <div class=\"row\">\n    <div class=\"col-md-3\">\n      <!-- <app-filter [filters]=\"filters\"></app-filter> -->\n      <app-filter #child [filters]=\"filters\"></app-filter>\n\n    </div>\n    <div class=\"col-md-9\">\n        <div *ngIf=\"!isNotFound()\">\n            <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid>\n          </div>\n    </div>\n  </div>\n\n  <div [hidden]=\"load\">\n    <app-load></app-load>\n  </div> \n\n  <div class=\"search-results\" infinite-scroll [infiniteScrollDistance]=\"4\" [infiniteScrollThrottle]=\"300\" (scrolled)=\"onScroll()\">\n  </div>\n\n</div>"
 
 /***/ }),
 
@@ -290,36 +290,69 @@ var CategoryComponent = (function () {
     }
     CategoryComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.filters = [];
         this.child.subject.subscribe(function (value) {
             _this.products = [];
             _this.pageNumber = 0;
-            _this.filterValue = '';
-            if (value !== undefined) {
-                _this.filterValue = '';
-                value.forEach(function (val) {
-                    if (_this.filterValue !== '') {
-                        _this.filterValue += "%20AND%20" + val;
-                    }
-                    else {
-                        _this.filterValue = val;
-                    }
-                });
+            if (value) {
+                _this.buildFilter(value);
                 _this.loadProducts(_this.filterValue);
             }
-            console.log(value);
         });
         this.sub = this.route.params.subscribe(function (params) {
             _this.id = params['id'];
             _this.pageNumber = 0;
             _this.filterValue = '';
+            _this.filters = [];
             if (params['pageNumber']) {
                 _this.pageNumber = params['pageNumber'];
             }
             else {
                 _this.pageNumber = 0;
             }
+            console.log(_this.filterValue);
             _this.loadProducts();
         });
+    };
+    CategoryComponent.prototype.buildFilter = function (filters) {
+        var _this = this;
+        var temp = [];
+        filters.forEach(function (filter) {
+            var g = temp.find(function (o) { return o.group === filter.group; });
+            // Caso nao exista cria um novo
+            if (!g) {
+                temp.push({ 'group': filter.group, params: [filter.entryValue] });
+            }
+            else {
+                // Caso ja exista, add
+                g.params.push(filter.entryValue);
+            }
+        });
+        this.filterValue = '';
+        // const x = temp.group;
+        temp.forEach(function (group) {
+            group.params.forEach(function (param) {
+                // this.filterValue += param;
+                if (group.params.length === 1) {
+                    // this.filterValue = param;
+                    _this.filterValue += "" + param;
+                }
+                else {
+                    if (param === group.params[0] && group.params.length > 1) {
+                        _this.filterValue = "(%20" + param;
+                    }
+                    else if (param === group.params[group.params.length - 1] && group.params.length > 1) {
+                        _this.filterValue += "%20OR%20" + param + ")";
+                    }
+                    else {
+                        _this.filterValue += "%20OR%20" + param;
+                    }
+                }
+                console.log(_this.filterValue);
+            });
+            _this.filterValue += '%20AND%20';
+        });
+        this.filterValue = this.filterValue.substring(0, this.filterValue.length - 9);
     };
     CategoryComponent.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();
@@ -332,13 +365,12 @@ var CategoryComponent = (function () {
         if (filter !== '') {
             this.product.getProductByFilter(this.id, filter, this.pageNumber).subscribe(function (params) {
                 _this.products = params.products;
-                _this.filters = params.filters;
+                // this.filters = params.filters;
                 _this.load = true;
                 _this.err = false;
             }, function (error) {
                 _this.err = true;
                 _this.load = true;
-                console.log(error);
             });
         }
         else {
@@ -359,24 +391,32 @@ var CategoryComponent = (function () {
     };
     CategoryComponent.prototype.onScroll = function () {
         var _this = this;
-        if (this.products === undefined) {
+        if (this.products === undefined || this.products.length < 50) {
             return false;
         }
-        if (this.filterValue !== undefined) {
-            this.pageNumber = ++this.pageNumber;
+        this.pageNumber = ++this.pageNumber;
+        this.load = false;
+        if (this.filterValue) {
             this.product.getProductByFilter(this.id, this.filterValue, this.pageNumber).subscribe(function (params) {
                 _this.products = _this.products.concat(params.products);
-                _this.filters = params.filters;
+                // this.filters = params.filters;
             }, function (error) {
-                console.log(error);
+                if (error.status === 404) {
+                    _this.load = true;
+                }
+            }, function () {
+                _this.load = !_this.load;
             });
         }
         else {
-            this.pageNumber = ++this.pageNumber;
             this.product.getProductByCategory(this.id, this.pageNumber).subscribe(function (params) {
                 _this.products = _this.products.concat(params.products);
             }, function (error) {
-                console.log(error);
+                if (error.status === 404) {
+                    _this.load = true;
+                }
+            }, function () {
+                _this.load = !_this.load;
             });
         }
     };
@@ -403,7 +443,7 @@ var _a, _b, _c;
 /***/ "../../../../../src/app/filter/filter.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div *ngFor=\"let tag of filterList\">\n  <span>remover</span>\n  {{tag}}\n</div> -->\n<div>\n  <button (click)=\"clearFilter()\">Limpar Busca</button>\n</div>\n\n<div *ngFor=\"let filter of filters\">\n  <div>\n    <h3 id=\"{{filter.value}}\">{{filter.name}}</h3>\n  </div>\n  <div *ngFor=\"let entry of filter.entry\">\n\n    <!-- <h5 id=\"{{entry.entryValue}}\"></h5> -->\n    <div class=\"form-check\">\n        <label class=\"form-check-label\">\n          <input class=\"form-check-input\" (change)=\"onFilter($event)\" type=\"checkbox\" name=\"filter\" value=\"{{entry.entryValue}}\"> \n          {{entry.label}}({{entry.count}})\n        </label>\n      </div>\n\n  </div>\n</div>"
+module.exports = "<div *ngFor=\"let filter of filters\">\n  <div>\n    <h3 id=\"{{filter.value}}\" class=\"filter-header\">{{filter.name}}</h3>\n  </div>\n  <div *ngFor=\"let entry of filter.entry\">\n\n    <!-- <h5 id=\"{{entry.entryValue}}\"></h5> -->\n    <div class=\"form-check\">\n        <label class=\"form-check-label filter-options\">\n          <input class=\"form-check-input\" (change)=\"onFilter($event, filter.value, entry.entryValue, entry.count)\" type=\"checkbox\" name=\"filter\" value=\"{{entry.entryValue}}\"> \n          {{entry.label}}({{entry.count}})\n        </label>\n      </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -415,7 +455,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".filter-header {\n  font-size: 14px;\n  background: #0a4968;\n  margin: 0px;\n  margin-top: 12px;\n  padding: 4px;\n  border-radius: 4px;\n  border: 2px #0a4968 solid;\n  color: white; }\n\n.filter-options {\n  font-size: 12px; }\n\n.form-check {\n  margin-left: 10px;\n  margin-bottom: 0px; }\n", ""]);
 
 // exports
 
@@ -450,29 +490,28 @@ var FilterComponent = (function () {
         this.subject = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Subject"]();
     }
     FilterComponent.prototype.ngOnInit = function () {
+        this.filterList = [];
     };
-    FilterComponent.prototype.onFilter = function (event) {
+    FilterComponent.prototype.ngOnChanges = function () {
+        console.log('change filter');
+        this.filterList = [];
+    };
+    FilterComponent.prototype.onFilter = function (event, value, entryValue, count) {
         if (event.target.checked) {
-            this.filterList.push(event.target.value);
-            console.log(this.filterList);
+            this.filterList.push({
+                group: value,
+                entryValue: entryValue,
+                count: count
+            });
         }
         else {
-            var i = this.filterList.indexOf(event.target.value);
+            var i = this.filterList.findIndex(function (y) { return (y.group === value && y.entryValue === entryValue); });
             this.filterList.splice(i, 1);
-            // remove list
-            // event.target.checked
-            // event.target.value
         }
-        // return true;
-        console.log(this.filterList);
         this.subject.next(this.filterList);
     };
     FilterComponent.prototype.notifyMe = function (e) {
         return this.filterList;
-    };
-    FilterComponent.prototype.clearFilter = function () {
-        this.filterList = [];
-        this.subject.next([]);
     };
     return FilterComponent;
 }());
@@ -538,13 +577,10 @@ var HorizontalGridComponent = (function () {
     function HorizontalGridComponent() {
         this.load = true;
     }
-    HorizontalGridComponent.prototype.ngOnInit = function () {
-        console.log('HorizontalGridComponent start');
-    };
+    HorizontalGridComponent.prototype.ngOnInit = function () { };
     HorizontalGridComponent.prototype.ngOnChanges = function () {
         if (this.itens !== undefined) {
             this.load = false;
-            console.log(this.itens);
         }
     };
     return HorizontalGridComponent;
