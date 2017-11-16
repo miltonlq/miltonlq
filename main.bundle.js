@@ -102,27 +102,23 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__service_product_service__ = __webpack_require__("../../../../../src/app/service/product.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__service_storage_service__ = __webpack_require__("../../../../../src/app/service/storage.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__category_category_category_component__ = __webpack_require__("../../../../../src/app/category/category/category.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__teste_observable_observable_component__ = __webpack_require__("../../../../../src/app/teste/observable/observable.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__service_authentication_service__ = __webpack_require__("../../../../../src/app/service/authentication.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__product_detail_detail_component__ = __webpack_require__("../../../../../src/app/product/detail/detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__grid_horizontal_grid_horizontal_grid_component__ = __webpack_require__("../../../../../src/app/grid/horizontal-grid/horizontal-grid.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__shared_gallery_gallery_component__ = __webpack_require__("../../../../../src/app/shared/gallery/gallery.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__shared_load_load_component__ = __webpack_require__("../../../../../src/app/shared/load/load.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__shared_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/shared/not-found/not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__shared_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/shared/page-not-found/page-not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pipe_slugify__ = __webpack_require__("../../../../../src/app/pipe/slugify.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__filter_filter_component__ = __webpack_require__("../../../../../src/app/filter/filter.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__teste_grid_grid_component__ = __webpack_require__("../../../../../src/app/teste/grid/grid.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__directive_price_directive__ = __webpack_require__("../../../../../src/app/directive/price.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__shared_price_price_component__ = __webpack_require__("../../../../../src/app/shared/price/price.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__service_authentication_service__ = __webpack_require__("../../../../../src/app/service/authentication.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__product_detail_detail_component__ = __webpack_require__("../../../../../src/app/product/detail/detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__grid_horizontal_grid_horizontal_grid_component__ = __webpack_require__("../../../../../src/app/grid/horizontal-grid/horizontal-grid.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__shared_gallery_gallery_component__ = __webpack_require__("../../../../../src/app/shared/gallery/gallery.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__shared_load_load_component__ = __webpack_require__("../../../../../src/app/shared/load/load.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__shared_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/shared/not-found/not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__shared_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/shared/page-not-found/page-not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pipe_slugify__ = __webpack_require__("../../../../../src/app/pipe/slugify.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__filter_filter_component__ = __webpack_require__("../../../../../src/app/filter/filter.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__directive_price_directive__ = __webpack_require__("../../../../../src/app/directive/price.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__shared_price_price_component__ = __webpack_require__("../../../../../src/app/shared/price/price.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
 
 
 
@@ -181,18 +177,16 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_15__shared_menu_menu_component__["a" /* MenuComponent */],
             __WEBPACK_IMPORTED_MODULE_16__shared_menu_departamentos_menu_departamentos_component__["a" /* MenuDepartamentosComponent */],
             __WEBPACK_IMPORTED_MODULE_22__category_category_category_component__["a" /* CategoryComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__teste_observable_observable_component__["a" /* ObservableComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__product_detail_detail_component__["a" /* DetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__grid_horizontal_grid_horizontal_grid_component__["a" /* HorizontalGridComponent */],
-            __WEBPACK_IMPORTED_MODULE_27__shared_gallery_gallery_component__["a" /* GalleryComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__shared_load_load_component__["a" /* LoadComponent */],
-            __WEBPACK_IMPORTED_MODULE_29__shared_not_found_not_found_component__["a" /* NotFoundComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__shared_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
-            __WEBPACK_IMPORTED_MODULE_31__pipe_slugify__["a" /* SlugifyPipe */],
-            __WEBPACK_IMPORTED_MODULE_32__filter_filter_component__["a" /* FilterComponent */],
-            __WEBPACK_IMPORTED_MODULE_33__teste_grid_grid_component__["a" /* GridComponent */],
-            __WEBPACK_IMPORTED_MODULE_34__directive_price_directive__["a" /* PriceDirective */],
-            __WEBPACK_IMPORTED_MODULE_35__shared_price_price_component__["a" /* PriceComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__product_detail_detail_component__["a" /* DetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__grid_horizontal_grid_horizontal_grid_component__["a" /* HorizontalGridComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__shared_gallery_gallery_component__["a" /* GalleryComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__shared_load_load_component__["a" /* LoadComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__shared_not_found_not_found_component__["a" /* NotFoundComponent */],
+            __WEBPACK_IMPORTED_MODULE_29__shared_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__pipe_slugify__["a" /* SlugifyPipe */],
+            __WEBPACK_IMPORTED_MODULE_31__filter_filter_component__["a" /* FilterComponent */],
+            __WEBPACK_IMPORTED_MODULE_32__directive_price_directive__["a" /* PriceDirective */],
+            __WEBPACK_IMPORTED_MODULE_33__shared_price_price_component__["a" /* PriceComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
@@ -203,7 +197,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_17__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */].forRoot(),
             __WEBPACK_IMPORTED_MODULE_3_angular2_infinite_scroll__["InfiniteScrollModule"],
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_19__service_spot_service__["a" /* SpotService */], __WEBPACK_IMPORTED_MODULE_20__service_product_service__["a" /* ProductService */], __WEBPACK_IMPORTED_MODULE_21__service_storage_service__["a" /* StorageService */], __WEBPACK_IMPORTED_MODULE_24__service_authentication_service__["a" /* AuthenticationService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_19__service_spot_service__["a" /* SpotService */], __WEBPACK_IMPORTED_MODULE_20__service_product_service__["a" /* ProductService */], __WEBPACK_IMPORTED_MODULE_21__service_storage_service__["a" /* StorageService */], __WEBPACK_IMPORTED_MODULE_23__service_authentication_service__["a" /* AuthenticationService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_6__app_routes__["a" /* appRoutingProviders */]]
     })
 ], AppModule);
@@ -225,8 +219,6 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__category_category_category_component__ = __webpack_require__("../../../../../src/app/category/category/category.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__product_detail_detail_component__ = __webpack_require__("../../../../../src/app/product/detail/detail.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/shared/page-not-found/page-not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__teste_grid_grid_component__ = __webpack_require__("../../../../../src/app/teste/grid/grid.component.ts");
-
 
 
 
@@ -239,7 +231,6 @@ var routes = [
     { path: 'category/:id/:seo', component: __WEBPACK_IMPORTED_MODULE_3__category_category_category_component__["a" /* CategoryComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_1__seguranca_login_login_component__["a" /* LoginComponent */] },
     { path: 'product/:id/:seo', component: __WEBPACK_IMPORTED_MODULE_4__product_detail_detail_component__["a" /* DetailComponent */] },
-    { path: 'test', component: __WEBPACK_IMPORTED_MODULE_6__teste_grid_grid_component__["a" /* GridComponent */] },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_5__shared_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */] }
 ];
 var appRoutingProviders = [];
@@ -362,7 +353,6 @@ var CategoryComponent = (function () {
                         _this.filterValue += "%20OR%20" + param;
                     }
                 }
-                console.log(_this.filterValue);
             });
             _this.filterValue += '%20AND%20';
         });
@@ -477,8 +467,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var PriceDirective = (function () {
     function PriceDirective(el) {
-        // el.nativeElement.style.backgroundColor = 'yellow';
-        // console.log('directive');
         this.newMethod();
     }
     PriceDirective.prototype.newMethod = function () {
@@ -555,7 +543,6 @@ var FilterComponent = (function () {
         this.filterList = [];
     };
     FilterComponent.prototype.ngOnChanges = function () {
-        console.log('change filter');
         this.filterList = [];
     };
     FilterComponent.prototype.onFilter = function (event, value, entryValue, count) {
@@ -932,6 +919,7 @@ var HomeComponent = (function () {
             obj.carousel.forEach(function (d) {
                 img.push({ image: obj.pathname + d.image, link: d.link });
             });
+            console.log(img);
             _this.images = img;
         });
     };
@@ -1211,7 +1199,6 @@ var DetailComponent = (function () {
     DetailComponent.prototype.loadProduct = function () {
         var _this = this;
         this.product.getProductById(this.id).subscribe(function (data) {
-            console.log(data.json());
             _this.load = true;
             _this.data = data.json();
             _this.images = data.json().images;
@@ -1439,7 +1426,7 @@ var ProductService = (function () {
     };
     ProductService.prototype.getPrice = function (productId) {
         // tslint:disable-next-line:max-line-length
-        return this.http.get("http://www.fastshop.com.br/webapp/wcs/stores/servlet/AjaxPriceDisplayView?catEntryIdentifier=" + productId + "&hotsite=fastshop&storeId=10151")
+        return this.http.get("https://www.fastshop.com.br/webapp/wcs/stores/servlet/AjaxPriceDisplayView?catEntryIdentifier=" + productId + "&hotsite=fastshop&storeId=10151")
             .map(function (data) {
             return data;
         });
@@ -1952,7 +1939,6 @@ var MenuDepartamentosComponent = (function () {
                     data.forEach(function (category) {
                         _this.storage.obterStorage('sub-departamento', category.uniqueID).subscribe(function (sub) {
                             category.sub = sub;
-                            console.log('sub : ' + sub);
                             _this.departaments.push(category);
                             var dataStorage = { 'version': 1.0, data: data };
                             localStorage.setItem('menu-departamento', JSON.stringify(dataStorage));
@@ -2248,151 +2234,6 @@ PriceComponent = __decorate([
 
 var _a;
 //# sourceMappingURL=price.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/teste/grid/grid.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<!-- <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid> -->\n\n<!-- {{print(count)}} -->\n\n<!-- <button (click)=\"btn\"></button> -->\n\n<app-price [price]=\"123\"></app-price>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/teste/grid/grid.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/teste/grid/grid.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GridComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_product_service__ = __webpack_require__("../../../../../src/app/service/product.service.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var GridComponent = (function () {
-    function GridComponent(product) {
-        this.product = product;
-        this.products = [];
-        this.count = 0;
-    }
-    GridComponent.prototype.ngOnInit = function () {
-        // this.product.getProductByCategory('4611686018425293053', 0).subscribe(
-        //   params => {
-        //     this.products = params.products;
-        //     console.log(params.products);
-        //     console.log(`ngInit `);
-        //   }, error => {
-        //     // console.log(error);
-        //   }
-        // );
-    };
-    GridComponent.prototype.print = function (count) {
-        this.count = this.count + 1;
-        console.log("print - " + this.count);
-        return "<span>tes " + this.count + "</span>";
-    };
-    GridComponent.prototype.btn = function () {
-        this.print(0);
-    };
-    return GridComponent;
-}());
-GridComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-grid',
-        template: __webpack_require__("../../../../../src/app/teste/grid/grid.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/teste/grid/grid.component.scss")]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_product_service__["a" /* ProductService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_product_service__["a" /* ProductService */]) === "function" && _a || Object])
-], GridComponent);
-
-var _a;
-//# sourceMappingURL=grid.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/teste/observable/observable.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  observable works!\n</p>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/teste/observable/observable.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/teste/observable/observable.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ObservableComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var ObservableComponent = (function () {
-    function ObservableComponent() {
-    }
-    ObservableComponent.prototype.ngOnInit = function () {
-    };
-    return ObservableComponent;
-}());
-ObservableComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-observable',
-        template: __webpack_require__("../../../../../src/app/teste/observable/observable.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/teste/observable/observable.component.scss")]
-    }),
-    __metadata("design:paramtypes", [])
-], ObservableComponent);
-
-//# sourceMappingURL=observable.component.js.map
 
 /***/ }),
 
