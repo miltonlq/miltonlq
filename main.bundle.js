@@ -20,7 +20,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n  \n  <router-outlet></router-outlet>\n\n</body>"
+module.exports = "<body id=\"body\">\n  \n  <router-outlet></router-outlet>\n\n</body>"
 
 /***/ }),
 
@@ -112,12 +112,18 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__shared_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/shared/page-not-found/page-not-found.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pipe_slugify__ = __webpack_require__("../../../../../src/app/pipe/slugify.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__filter_filter_component__ = __webpack_require__("../../../../../src/app/filter/filter.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__teste_grid_grid_component__ = __webpack_require__("../../../../../src/app/teste/grid/grid.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__directive_price_directive__ = __webpack_require__("../../../../../src/app/directive/price.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__shared_price_price_component__ = __webpack_require__("../../../../../src/app/shared/price/price.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -184,6 +190,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_30__shared_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
             __WEBPACK_IMPORTED_MODULE_31__pipe_slugify__["a" /* SlugifyPipe */],
             __WEBPACK_IMPORTED_MODULE_32__filter_filter_component__["a" /* FilterComponent */],
+            __WEBPACK_IMPORTED_MODULE_33__teste_grid_grid_component__["a" /* GridComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__directive_price_directive__["a" /* PriceDirective */],
+            __WEBPACK_IMPORTED_MODULE_35__shared_price_price_component__["a" /* PriceComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
@@ -216,6 +225,8 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__category_category_category_component__ = __webpack_require__("../../../../../src/app/category/category/category.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__product_detail_detail_component__ = __webpack_require__("../../../../../src/app/product/detail/detail.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/shared/page-not-found/page-not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__teste_grid_grid_component__ = __webpack_require__("../../../../../src/app/teste/grid/grid.component.ts");
+
 
 
 
@@ -228,6 +239,7 @@ var routes = [
     { path: 'category/:id/:seo', component: __WEBPACK_IMPORTED_MODULE_3__category_category_category_component__["a" /* CategoryComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_1__seguranca_login_login_component__["a" /* LoginComponent */] },
     { path: 'product/:id/:seo', component: __WEBPACK_IMPORTED_MODULE_4__product_detail_detail_component__["a" /* DetailComponent */] },
+    { path: 'test', component: __WEBPACK_IMPORTED_MODULE_6__teste_grid_grid_component__["a" /* GridComponent */] },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_5__shared_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */] }
 ];
 var appRoutingProviders = [];
@@ -239,7 +251,7 @@ var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule 
 /***/ "../../../../../src/app/category/category/category.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n\n<div class=\"top-fix\"></div>\n<app-menu-categoria></app-menu-categoria>\n\n<div class=\"container\">\n\n  <div class=\"row\">\n    <div class=\"col-md-3\">\n      <app-filter #child [filters]=\"filters\"></app-filter>\n\n    </div>\n    <div class=\"col-md-9\">\n      <div *ngIf=\"!isNotFound()\">\n        <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid>\n      </div>\n      <div [hidden]=\"load\">\n        <app-load></app-load>\n      </div>\n\n      <div class=\"product-not-found\" *ngIf=\"isNotFound() && load\">\n        <h3>Produto não localizado</h3>\n      </div>\n\n    </div>\n  </div>\n\n  <div class=\"search-results\" infinite-scroll [infiniteScrollDistance]=\"4\" [infiniteScrollThrottle]=\"300\" (scrolled)=\"onScroll()\">\n  </div>\n\n</div>"
+module.exports = "<app-header></app-header>\n\n<div class=\"top-fix\"></div>\n<app-menu-categoria></app-menu-categoria>\n\n<div class=\"container\">\n\n  <div class=\"row\">\n    <div class=\"col-md-3\">\n      <app-filter #child [filters]=\"filters\"></app-filter>\n    </div>\n    <div class=\"col-md-9\">\n      <div *ngIf=\"!isNotFound()\">\n        <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid>\n      </div>\n      <div [hidden]=\"load\">\n        <app-load></app-load>\n      </div>\n\n      <div class=\"product-not-found\" *ngIf=\"isNotFound() && load\">\n        <h3>Produto não localizado</h3>\n      </div>\n\n    </div>\n  </div>\n\n  <div class=\"search-results\" infinite-scroll [infiniteScrollDistance]=\"4\" [infiniteScrollThrottle]=\"300\" (scrolled)=\"onScroll()\">\n  </div>\n\n</div>"
 
 /***/ }),
 
@@ -251,7 +263,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".product-not-found {\n  text-align: center;\n  margin: 20px; }\n", ""]);
+exports.push([module.i, ".product-not-found {\n  text-align: center;\n  margin: 20px; }\n\n.interest-price {\n  font-size: 9px;\n  color: gray; }\n", ""]);
 
 // exports
 
@@ -284,9 +296,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var CategoryComponent = (function () {
-    function CategoryComponent(route, product) {
+    function CategoryComponent(route, product, elRef) {
         this.route = route;
         this.product = product;
+        this.elRef = elRef;
     }
     CategoryComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -387,9 +400,6 @@ var CategoryComponent = (function () {
             });
         }
     };
-    CategoryComponent.prototype.isNotFound = function () {
-        return this.err;
-    };
     CategoryComponent.prototype.onScroll = function () {
         var _this = this;
         if (this.products === undefined || this.products.length < 50) {
@@ -421,6 +431,10 @@ var CategoryComponent = (function () {
             });
         }
     };
+    // Not found
+    CategoryComponent.prototype.isNotFound = function () {
+        return this.err;
+    };
     CategoryComponent.prototype.ops = function () {
         this.err = !this.err;
         console.log(this.err);
@@ -437,11 +451,54 @@ CategoryComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/category/category/category.component.html"),
         styles: [__webpack_require__("../../../../../src/app/category/category/category.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__service_product_service__["a" /* ProductService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_product_service__["a" /* ProductService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__service_product_service__["a" /* ProductService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_product_service__["a" /* ProductService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _d || Object])
 ], CategoryComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=category.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/directive/price.directive.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PriceDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var PriceDirective = (function () {
+    function PriceDirective(el) {
+        // el.nativeElement.style.backgroundColor = 'yellow';
+        // console.log('directive');
+        this.newMethod();
+    }
+    PriceDirective.prototype.newMethod = function () {
+        return '<span>hel</span>';
+    };
+    return PriceDirective;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], PriceDirective.prototype, "productId", void 0);
+PriceDirective = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
+        selector: '[appPrice]'
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object])
+], PriceDirective);
+
+var _a;
+//# sourceMappingURL=price.directive.js.map
 
 /***/ }),
 
@@ -538,7 +595,7 @@ FilterComponent = __decorate([
 /***/ "../../../../../src/app/grid/horizontal-grid/horizontal-grid.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [hidden]=\"!load\">\n  <app-load></app-load>\n</div>\n\n<div class=\"row\">\n  <div class=\"col-sm-6 col-md-4 col-12 col-xl-3 horizontal-grid-short-description horizontal-grid-box\" *ngFor=\"let item of itens\">\n    <div class=\"horizontal-grid-container\">\n      <p class=\"horizontal-grid-short-description\" [routerLink]=\"['/product', item.productID, item.shortDescription | slugify]\">{{item.shortDescription}} <br> <span class=\"star-vote\">★★★★★</span></p>\n\n      <!-- <a class=\"btn btn-outline-info\" href=\"#\" [routerLink]=\"['/product', item.productID ]\">Mais informações</a> -->\n\n      <!-- <p class=\"star-vote\">★★★★★</p> -->\n      <a href=\"#\" [routerLink]=\"['/product', item.productID, item.shortDescription | slugify ]\"><img class=\"card-img-top horizontal-grid-img\" src=\"https://prdresources1-a.akamaihd.net/{{item.thumbnail}}\" alt=\"Card image cap\"></a>\n      \n\n      <p _ngcontent-c1=\"\" class=\"detail-price-tag\">de: R$ 9.999,00</p>\n      <p _ngcontent-c1=\"\" class=\"detail-price-offer\">por: R$ 1.999,90 à vista</p>\n    </div>\n  </div>\n</div>"
+module.exports = "<div [hidden]=\"!load\">\n  <app-load></app-load>\n</div>\n\n<div class=\"row\">\n  <div class=\"col-sm-6 col-md-4 col-12 col-xl-3 horizontal-grid-short-description horizontal-grid-box\" *ngFor=\"let item of itens\">\n    <div class=\"horizontal-grid-container\" id=\"{{item.productID}}\">\n\n      <p class=\"horizontal-grid-short-description\" [routerLink]=\"['/product', item.productID, item.shortDescription | slugify]\">\n        {{item.shortDescription}}\n        <br>\n      </p>\n\n      <p class=\"star-vote\">★★★★★</p>\n      <a href=\"#\" [routerLink]=\"['/product', item.productID, item.shortDescription | slugify ]\">\n        <img class=\"card-img-top horizontal-grid-img\" src=\"https://prdresources1-a.akamaihd.net/{{item.thumbnail}}\" alt=\"Card image cap\">\n      </a>\n\n      <app-price [price]=\"item.productID\"></app-price>\n\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1380,6 +1437,13 @@ var ProductService = (function () {
             return data;
         }).catch(function (error) { return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(error.json().error || 'Server error'); });
     };
+    ProductService.prototype.getPrice = function (productId) {
+        // tslint:disable-next-line:max-line-length
+        return this.http.get("http://www.fastshop.com.br/webapp/wcs/stores/servlet/AjaxPriceDisplayView?catEntryIdentifier=" + productId + "&hotsite=fastshop&storeId=10151")
+            .map(function (data) {
+            return data;
+        });
+    };
     return ProductService;
 }());
 ProductService = __decorate([
@@ -2106,6 +2170,168 @@ PageNotFoundComponent = __decorate([
 ], PageNotFoundComponent);
 
 //# sourceMappingURL=page-not-found.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/price/price.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\n<div [innerHTML]=\"vista\"></div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/price/price.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".interest-price {\n  font-size: 9px;\n  color: gray; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/shared/price/price.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PriceComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_product_service__ = __webpack_require__("../../../../../src/app/service/product.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var PriceComponent = (function () {
+    function PriceComponent(product) {
+        this.product = product;
+    }
+    PriceComponent.prototype.ngOnInit = function () {
+        this.renderPrice();
+    };
+    PriceComponent.prototype.renderPrice = function () {
+        var _this = this;
+        this.product.getPrice(this.price)
+            .subscribe(function (x) {
+            var p = JSON.parse(x._body.replace('/*', '').replace('*/', ''));
+            _this.vista = "<p class=\"detail-price-tag\">de: " + p.priceData.listPrice + "</p>\n                    <p class=\"detail-price-offer\">por: " + p.priceData.offerPrice + " \u00E0 vista</p>\n                    <b class=\"price-installment-price\">" + p.priceData.installmentPrice + "</b>\n                    <p class=\"interest-price\">" + p.priceData.interestPrice + "</p>\n                    <b class=\"price-installment-price\">" + p.priceData.totalPrice + "</b>";
+        });
+    };
+    return PriceComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], PriceComponent.prototype, "price", void 0);
+PriceComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-price',
+        template: __webpack_require__("../../../../../src/app/shared/price/price.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/shared/price/price.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_product_service__["a" /* ProductService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_product_service__["a" /* ProductService */]) === "function" && _a || Object])
+], PriceComponent);
+
+var _a;
+//# sourceMappingURL=price.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/teste/grid/grid.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<!-- <app-horizontal-grid [itens]=\"products\"></app-horizontal-grid> -->\n\n<!-- {{print(count)}} -->\n\n<!-- <button (click)=\"btn\"></button> -->\n\n<app-price [price]=\"123\"></app-price>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/teste/grid/grid.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/teste/grid/grid.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GridComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_product_service__ = __webpack_require__("../../../../../src/app/service/product.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var GridComponent = (function () {
+    function GridComponent(product) {
+        this.product = product;
+        this.products = [];
+        this.count = 0;
+    }
+    GridComponent.prototype.ngOnInit = function () {
+        // this.product.getProductByCategory('4611686018425293053', 0).subscribe(
+        //   params => {
+        //     this.products = params.products;
+        //     console.log(params.products);
+        //     console.log(`ngInit `);
+        //   }, error => {
+        //     // console.log(error);
+        //   }
+        // );
+    };
+    GridComponent.prototype.print = function (count) {
+        this.count = this.count + 1;
+        console.log("print - " + this.count);
+        return "<span>tes " + this.count + "</span>";
+    };
+    GridComponent.prototype.btn = function () {
+        this.print(0);
+    };
+    return GridComponent;
+}());
+GridComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-grid',
+        template: __webpack_require__("../../../../../src/app/teste/grid/grid.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/teste/grid/grid.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_product_service__["a" /* ProductService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_product_service__["a" /* ProductService */]) === "function" && _a || Object])
+], GridComponent);
+
+var _a;
+//# sourceMappingURL=grid.component.js.map
 
 /***/ }),
 
