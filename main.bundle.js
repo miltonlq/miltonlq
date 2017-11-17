@@ -98,21 +98,24 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__shared_menu_departamentos_menu_departamentos_component__ = __webpack_require__("../../../../../src/app/shared/menu-departamentos/menu-departamentos.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__service_spot_service__ = __webpack_require__("../../../../../src/app/service/spot.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__service_product_service__ = __webpack_require__("../../../../../src/app/service/product.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__service_storage_service__ = __webpack_require__("../../../../../src/app/service/storage.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__category_category_category_component__ = __webpack_require__("../../../../../src/app/category/category/category.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__service_authentication_service__ = __webpack_require__("../../../../../src/app/service/authentication.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__product_detail_detail_component__ = __webpack_require__("../../../../../src/app/product/detail/detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__grid_horizontal_grid_horizontal_grid_component__ = __webpack_require__("../../../../../src/app/grid/horizontal-grid/horizontal-grid.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__shared_gallery_gallery_component__ = __webpack_require__("../../../../../src/app/shared/gallery/gallery.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__shared_load_load_component__ = __webpack_require__("../../../../../src/app/shared/load/load.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__shared_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/shared/not-found/not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__shared_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/shared/page-not-found/page-not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pipe_slugify__ = __webpack_require__("../../../../../src/app/pipe/slugify.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__filter_filter_component__ = __webpack_require__("../../../../../src/app/filter/filter.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__directive_price_directive__ = __webpack_require__("../../../../../src/app/directive/price.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__shared_price_price_component__ = __webpack_require__("../../../../../src/app/shared/price/price.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__product_detail_detail_component__ = __webpack_require__("../../../../../src/app/product/detail/detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__grid_horizontal_grid_horizontal_grid_component__ = __webpack_require__("../../../../../src/app/grid/horizontal-grid/horizontal-grid.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__shared_gallery_gallery_component__ = __webpack_require__("../../../../../src/app/shared/gallery/gallery.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__shared_load_load_component__ = __webpack_require__("../../../../../src/app/shared/load/load.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__shared_not_found_not_found_component__ = __webpack_require__("../../../../../src/app/shared/not-found/not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__shared_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/shared/page-not-found/page-not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pipe_slugify__ = __webpack_require__("../../../../../src/app/pipe/slugify.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pipe_truncate__ = __webpack_require__("../../../../../src/app/pipe/truncate.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__filter_filter_component__ = __webpack_require__("../../../../../src/app/filter/filter.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__directive_price_directive__ = __webpack_require__("../../../../../src/app/directive/price.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__shared_price_price_component__ = __webpack_require__("../../../../../src/app/shared/price/price.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__search_search_component__ = __webpack_require__("../../../../../src/app/search/search.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__category_category_category_component__ = __webpack_require__("../../../../../src/app/category/category/category.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__service_spot_service__ = __webpack_require__("../../../../../src/app/service/spot.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__service_product_service__ = __webpack_require__("../../../../../src/app/service/product.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__service_storage_service__ = __webpack_require__("../../../../../src/app/service/storage.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__service_authentication_service__ = __webpack_require__("../../../../../src/app/service/authentication.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__service_search_service__ = __webpack_require__("../../../../../src/app/service/search.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -151,11 +154,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-
-
 // import { JwtModule } from '@auth0/angular-jwt';
 // import { HttpClientModule } from '@angular/common/http';
+
+
+
+
+
+
 var AppModule = (function () {
     function AppModule() {
     }
@@ -176,17 +182,19 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_14__home_sub_banner_sub_banner_component__["a" /* SubBannerComponent */],
             __WEBPACK_IMPORTED_MODULE_15__shared_menu_menu_component__["a" /* MenuComponent */],
             __WEBPACK_IMPORTED_MODULE_16__shared_menu_departamentos_menu_departamentos_component__["a" /* MenuDepartamentosComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__category_category_category_component__["a" /* CategoryComponent */],
-            __WEBPACK_IMPORTED_MODULE_24__product_detail_detail_component__["a" /* DetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__grid_horizontal_grid_horizontal_grid_component__["a" /* HorizontalGridComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__shared_gallery_gallery_component__["a" /* GalleryComponent */],
-            __WEBPACK_IMPORTED_MODULE_27__shared_load_load_component__["a" /* LoadComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__shared_not_found_not_found_component__["a" /* NotFoundComponent */],
-            __WEBPACK_IMPORTED_MODULE_29__shared_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__pipe_slugify__["a" /* SlugifyPipe */],
-            __WEBPACK_IMPORTED_MODULE_31__filter_filter_component__["a" /* FilterComponent */],
-            __WEBPACK_IMPORTED_MODULE_32__directive_price_directive__["a" /* PriceDirective */],
-            __WEBPACK_IMPORTED_MODULE_33__shared_price_price_component__["a" /* PriceComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__category_category_category_component__["a" /* CategoryComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__product_detail_detail_component__["a" /* DetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__grid_horizontal_grid_horizontal_grid_component__["a" /* HorizontalGridComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__shared_gallery_gallery_component__["a" /* GalleryComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__shared_load_load_component__["a" /* LoadComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__shared_not_found_not_found_component__["a" /* NotFoundComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__shared_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__pipe_slugify__["a" /* SlugifyPipe */],
+            __WEBPACK_IMPORTED_MODULE_26__pipe_truncate__["a" /* TruncatePipe */],
+            __WEBPACK_IMPORTED_MODULE_27__filter_filter_component__["a" /* FilterComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__directive_price_directive__["a" /* PriceDirective */],
+            __WEBPACK_IMPORTED_MODULE_29__shared_price_price_component__["a" /* PriceComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__search_search_component__["a" /* SearchComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
@@ -197,7 +205,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_17__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */].forRoot(),
             __WEBPACK_IMPORTED_MODULE_3_angular2_infinite_scroll__["InfiniteScrollModule"],
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_19__service_spot_service__["a" /* SpotService */], __WEBPACK_IMPORTED_MODULE_20__service_product_service__["a" /* ProductService */], __WEBPACK_IMPORTED_MODULE_21__service_storage_service__["a" /* StorageService */], __WEBPACK_IMPORTED_MODULE_23__service_authentication_service__["a" /* AuthenticationService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_32__service_spot_service__["a" /* SpotService */], __WEBPACK_IMPORTED_MODULE_33__service_product_service__["a" /* ProductService */], __WEBPACK_IMPORTED_MODULE_34__service_storage_service__["a" /* StorageService */], __WEBPACK_IMPORTED_MODULE_35__service_authentication_service__["a" /* AuthenticationService */], __WEBPACK_IMPORTED_MODULE_36__service_search_service__["a" /* SearchService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_6__app_routes__["a" /* appRoutingProviders */]]
     })
 ], AppModule);
@@ -852,7 +860,7 @@ var _a;
 /***/ "../../../../../src/app/home/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header>\n</app-header>\n\n<div class=\"top-fix\">\n  <app-banner-principal [images]='images'></app-banner-principal>\n</div>\n\n<!-- <app-menu-departamentos></app-menu-departamentos> -->\n\n\n<div class=\"container\">\n  <app-menu-categoria></app-menu-categoria>\n\n  <!-- <div #dataContainerHomeCorpo01Cont></div> -->\n\n  <!-- <div class=\"spot_webapp_teste\"></div> -->\n\n\n  <app-banner-grid></app-banner-grid>\n\n  <app-horizontal-grid [itens]=\"itens\"></app-horizontal-grid>\n\n  <h3>Para sua Cozinha</h3>\n  <app-horizontal-grid [itens]=\"kitchen\"></app-horizontal-grid>\n\n  <h3>Para sua Sala</h3>\n  <app-horizontal-grid [itens]=\"livingRoom\"></app-horizontal-grid>\n\n  <!-- Para sua cozinha -->\n\n  <!-- Para sua sala -->\n\n\n\n</div>"
+module.exports = "<app-header>\n</app-header>\n\n<div class=\"top-fix\">\n  <app-banner-principal [images]='images'></app-banner-principal>\n</div>\n\n<!-- <app-menu-departamentos></app-menu-departamentos> -->\n\n\n<div class=\"container\">\n  <app-menu-categoria></app-menu-categoria>\n\n  <!-- <div #dataContainerHomeCorpo01Cont></div> -->\n\n  <!-- <div class=\"spot_webapp_teste\"></div> -->\n\n\n  <app-search></app-search>\n  <app-banner-grid></app-banner-grid>\n\n  <app-horizontal-grid [itens]=\"itens\"></app-horizontal-grid>\n\n  <h3>Para sua Cozinha</h3>\n  <app-horizontal-grid [itens]=\"kitchen\"></app-horizontal-grid>\n\n  <h3>Para sua Sala</h3>\n  <app-horizontal-grid [itens]=\"livingRoom\"></app-horizontal-grid>\n\n  <!-- Para sua cozinha -->\n\n  <!-- Para sua sala -->\n\n\n\n</div>"
 
 /***/ }),
 
@@ -938,12 +946,6 @@ var HomeComponent = (function () {
             _this.livingRoom = _this.range(data.products, 8);
         });
     };
-    // srange(start, count) {
-    //   return Array.apply(0, Array(count))
-    //     .map(function (element, index) {
-    //       return index + start;
-    //     });
-    // }
     HomeComponent.prototype.range = function (list, last) {
         var newList = [];
         list.forEach(function (value, i) {
@@ -951,7 +953,7 @@ var HomeComponent = (function () {
                 return true;
             }
             newList.push(value);
-            console.log('%d: %s', i, value);
+            // console.log('%d: %s', i, value);
         });
         return newList;
     };
@@ -1138,6 +1140,37 @@ SlugifyPipe = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/pipe/truncate.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TruncatePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var TruncatePipe = (function () {
+    function TruncatePipe() {
+    }
+    TruncatePipe.prototype.transform = function (value, args) {
+        var limit = args.length > 0 ? parseInt(args[0], 10) : 10;
+        var trail = args.length > 1 ? args[1] : '...';
+        return value.length > limit ? value.substring(0, limit) + trail : value;
+    };
+    return TruncatePipe;
+}());
+TruncatePipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: 'truncate' })
+], TruncatePipe);
+
+//# sourceMappingURL=truncate.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/product/detail/detail.component.html":
 /***/ (function(module, exports) {
 
@@ -1221,6 +1254,115 @@ DetailComponent = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=detail.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/search/search.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<!-- <div class=\"dropdown\">\n    <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n      Dropdown button\n    </button>\n    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n      <a class=\"dropdown-item\" href=\"#\">Action</a>\n      <a class=\"dropdown-item\" href=\"#\">Another action</a>\n      <a class=\"dropdown-item\" href=\"#\">Something else here</a>\n    </div>\n  </div> -->\n\n\n<div class=\"search-conteiner\">\n  <div>\n    <input class=\"search-input\" placeholder=\"Busca\" (keydown)=\"busca($event)\">\n  </div>\n\n  <div *ngIf=\"showResult()\" class=\"search-result\">\n    <div class=\"row\">\n\n      <div class=\"col-3 search-suggestion\">\n        <h5>Recomendados: </h5>\n        <div  *ngFor=\"let suggestion of suggestions\">\n          <a class=\"dropdown-item\" href=\"{{suggestion.link}}\">{{suggestion.query }}</a>\n        </div>\n        \n\n      </div>\n\n      <div class=\"col-9 \">\n          <h5>Produtos sugeridos: </h5>\n        <div class=\"row\">\n            <div class=\"col-3\" *ngFor=\"let product of products\">\n                <a [routerLink]=\"['/product', product.details.catalogEntryId[0], product.name | slugify ]\">\n                  <span class=\"search-product-name\">{{product.name}}</span>\n                  <!-- <span>{{product.detail}}</span> -->\n                  <img class=\"search-img\" src=\"{{product.images.default}}\">\n                </a>\n                \n              </div>\n        </div>\n       \n\n      </div>\n\n    </div>\n\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/search/search.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".search-img {\n  width: 100%; }\n\n.search-conteiner {\n  font-size: 10px;\n  text-align: center;\n  width: 100%;\n  background: #f5f6f7; }\n\n.search-input {\n  width: 100%;\n  text-align: center;\n  border: 1px solid #0a4968;\n  border-radius: 5px;\n  margin: 3px;\n  padding: 2px; }\n\n.search-suggestion {\n  border-right: 2px solid gray; }\n\n.search-result {\n  font-size: 10px;\n  position: absolute;\n  max-height: 400px;\n  overflow-y: auto;\n  z-index: 1000;\n  margin: .125rem 0 0;\n  font-size: 1rem;\n  color: #212529;\n  text-align: left;\n  list-style: none;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  border-radius: .25rem;\n  width: 82%;\n  padding: 14px;\n  margin-left: 40px; }\n\n.search-product-name {\n  font-size: 10px; }\n\n.dropdown-item {\n  font-size: 11px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/search/search.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_search_service__ = __webpack_require__("../../../../../src/app/service/search.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var SearchComponent = (function () {
+    function SearchComponent(searchService) {
+        this.searchService = searchService;
+        this.products = [];
+        this.suggestions = [];
+    }
+    SearchComponent.prototype.ngOnInit = function () {
+    };
+    // search(e) {
+    //   console.log(e.target.value());
+    //   this.searchService.getSearch(e.target.value).subscribe(
+    //     result => {
+    //       this.result = result;
+    //       console.log(result);
+    //     }, error => {
+    //       console.log(error);
+    //     }
+    //   );
+    // }
+    SearchComponent.prototype.busca = function (e) {
+        var _this = this;
+        if (e.target.value.length > 2) {
+            // this.products = [];
+            // this.suggestions = [];
+            this.searchService.getSearch(e.target.value).subscribe(function (result) {
+                _this.products = result.products.slice(0, 4);
+                _this.suggestions = result.suggestions;
+                console.log(result);
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        else {
+            this.products = [];
+            this.suggestions = [];
+        }
+    };
+    SearchComponent.prototype.showResult = function () {
+        // console.log('show');
+        if (this.products.length !== 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    return SearchComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], SearchComponent.prototype, "query", void 0);
+SearchComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-search',
+        template: __webpack_require__("../../../../../src/app/search/search.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/search/search.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_search_service__["a" /* SearchService */]) === "function" && _a || Object])
+], SearchComponent);
+
+var _a;
+//# sourceMappingURL=search.component.js.map
 
 /***/ }),
 
@@ -1440,6 +1582,67 @@ ProductService = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=product.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/service/search.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var SearchService = (function () {
+    function SearchService(http) {
+        this.http = http;
+        this.url = 'https://www.fastshop.com.br/wcs/resources/';
+    }
+    SearchService.prototype.createAuthorizationHeader = function (headers) {
+        headers.append('x-api-key', 'fastshop-v6');
+        headers.append('x-secret-key', '7V0dpc8ZFxwCRyCROLZ8xA==');
+    };
+    SearchService.prototype.getSearch = function (query) {
+        if (query) {
+            var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
+            headers.append('x-api-key', 'fastshop-v6');
+            headers.append('x-secret-key', '7V0dpc8ZFxwCRyCROLZ8xA==');
+            // headers.append('Access-Control-Allow-Headers', 'Content-Type');
+            // headers.append('Access-Control-Allow-Methods', 'GET');
+            // headers.append('Access-Control-Allow-Origin', '*');
+            // this.createAuthorizationHeader(headers);
+            // const req = new RequestOptions({ headers: headers, withCredentials: true });
+            // tslint:disable-next-line:max-line-length
+            // return this.http.get(`https://fastshop-v6.neemu.com/searchapi/v3/search?&terms=${query}`, { headers : headers})
+            return this.http.get("http://fastshop-v6.neemu.com/searchapi/v3/search?terms=" + query, { headers: headers })
+                .map(function (res) {
+                console.log(res.json());
+                return res.json();
+            }).catch(function (error) { return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(error.json().error || 'Server error'); });
+        }
+    };
+    return SearchService;
+}());
+SearchService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], SearchService);
+
+var _a;
+//# sourceMappingURL=search.service.js.map
 
 /***/ }),
 
